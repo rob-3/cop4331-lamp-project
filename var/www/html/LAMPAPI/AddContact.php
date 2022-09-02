@@ -4,7 +4,7 @@ try {
 	header('content-type: application/json');
 
 	$requestData = json_decode(file_get_contents('php://input'), true);
-	
+
 	$contact = $requestData['contact'];
 	$userId = $requestData['userId'];
 

@@ -1,4 +1,8 @@
 <?php
+set_error_handler(function ($code, $message) {
+	error_log("{$code}: {$message}");
+});
+
 function on_json_request(callable $handler) {
 	header('content-type: application/json');
 	$requestData = json_decode(file_get_contents('php://input'), true);

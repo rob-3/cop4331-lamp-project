@@ -4,7 +4,7 @@ on_json_request(function(mixed $requestData) {
 	$contact = $requestData['contact'];
 	$userId = $requestData['userId'];
 
-	$db = create_db();
+	$db = open_db();
 	if (!$db) {
 		throw new Exception('Database connection failed!');
 	}

@@ -21,7 +21,7 @@ function on_json_request(callable $handler) {
 	}
 }
 
-function create_db(): ?\mysqli {
+function open_db(): ?\mysqli {
 	// FIXME we need the real credentials, and probably should store them
 	// outside the code
 	$db = new mysqli('localhost', 'TheBeast', 'WeLoveCOP4331', 'COP4331');

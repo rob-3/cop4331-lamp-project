@@ -1,10 +1,6 @@
 <?php
 require_once('./Utils.php');
-try {
-	header('content-type: application/json');
-
-	$requestData = json_decode(file_get_contents('php://input'), true);
-
+on_json_request(function(mixed $requestData) {
 	$contact = $requestData['contact'];
 	$userId = $requestData['userId'];
 
@@ -18,6 +14,8 @@ try {
 	$stmt->execute();
 	$stmt->close();
 	$db->close();
-} catch (\Throwable $th) {
-	log_and_die($th->getMessage());
-}
+
+	return [
+		'hello' => 'world'
+	];
+});

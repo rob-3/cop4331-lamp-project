@@ -22,9 +22,8 @@ function on_json_request(callable $handler) {
 }
 
 function open_db(): ?\mysqli {
-	// FIXME we need the real credentials, and probably should store them
-	// outside the code
-	$db = new mysqli('localhost', 'TheBeast', 'WeLoveCOP4331', 'COP4331');
+	// FIXME we should store the credentials outside the code
+	$db = new mysqli('localhost', 'root', 'password', 'contacts');
 	if ($db->connect_error) {
 		error_log($db->connect_error);
 		return null;

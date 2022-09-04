@@ -202,9 +202,10 @@ const serverErrors = false;
 
 /** 
  * Create a contact.
+ * @param {number} userId The user's ID
  * @param {Contact} contact
  */
-function addContact(contact) {
+function addContact(userId, contact) {
 	if (networkErrors) {
 		return Promise.reject(new TypeError("NetworkError when attempting to fetch resource."))
 	}
@@ -216,9 +217,10 @@ function addContact(contact) {
 
 /** 
  * Delete a contact.
+ * @param {number} userId The user's ID
  * @param {number} contactId
  */
-function deleteContact(contactId) {
+function deleteContact(userId, contactId) {
 	if (networkErrors) {
 		return Promise.reject(new TypeError("NetworkError when attempting to fetch resource."))
 	}
@@ -232,9 +234,10 @@ function deleteContact(contactId) {
 
 /** 
  * Update a contact.
+ * @param {number} userId The user's ID
  * @param {Contact} newContact a _complete_ Contact object, including id and any updated values
  */
-function editContact(newContact) {
+function editContact(userId, newContact) {
 	if (networkErrors) {
 		return Promise.reject(new TypeError("NetworkError when attempting to fetch resource."))
 	}
@@ -246,18 +249,20 @@ function editContact(newContact) {
 
 /** 
  * Returns randomly some contacts, for now.
+ * @param {number} userId The user's ID
  * @param {number} n How many contacts to fetch at most
  */
-function getContacts(n) {
-	return searchContacts("", n);
+function getContacts(userId, n) {
+	return searchContacts(userId, "", n);
 }
 
 /** 
  * Returns randomly some contacts, for now.
+ * @param {number} userId The user's ID
  * @param {string} query Can be empty to just get in order.
  * @param {number} n How many contacts to fetch at most
  */
-function searchContacts(query, n) {
+function searchContacts(userId, query, n) {
 	if (networkErrors) {
 		return Promise.reject(new TypeError("NetworkError when attempting to fetch resource."))
 	}

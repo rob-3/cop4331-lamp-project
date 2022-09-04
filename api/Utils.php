@@ -14,10 +14,6 @@ function on_json_request(callable $handler) {
 	} catch (Throwable $th) {
 		http_response_code(500);
 		error_log($th->getMessage());
-		echo json_encode([
-			'status' => http_response_code(),
-			'message' => 'Internal server error'
-		]);
 	}
 }
 

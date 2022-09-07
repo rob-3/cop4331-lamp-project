@@ -1,11 +1,6 @@
 <?php
 require_once('./Utils.php');
-on_json_request(function (mixed $requestData) {
-	$db = open_db();
-	if (!$db) {
-		throw new Error("Failed to open database!");
-	}
-
+on_json_request_with_db(function (mixed $requestData, mysqli $db) {
 	$stmt = $db->prepare("select * from Contacts where FirstName like ? and UserID=?");
 	$contactName = "%" . $requestData["query"] . "%";
 	$stmt->bind_param("ss", $contactName, $requestData["userId"]);

@@ -10,7 +10,7 @@ on_json_request_with_db(function(mixed $request_data, mysqli $db) {
 	$phone_number = $contact['phoneNumber'];
 
 	$stmt = $db->prepare('INSERT into Contacts (UserID, FirstName, LastName, Email, PhoneNumber) VALUES(?,?,?,?,?)');
-	$stmt->bind_param('ss', $user_id, $first_name, $last_name, $email, $phone_number);
+	$stmt->bind_param('issss', $user_id, $first_name, $last_name, $email, $phone_number);
 	$success = $stmt->execute();
 	$stmt->close();
 

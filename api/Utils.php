@@ -5,9 +5,9 @@ set_error_handler(function ($code, $message) {
 
 function on_json_request(callable $handler) {
 	header('content-type: application/json');
-	$requestData = json_decode(file_get_contents('php://input'), true);
+	$request_data = json_decode(file_get_contents('php://input'), true);
 	try {
-		$ret = $handler($requestData);
+		$ret = $handler($request_data);
 		if ($ret) {
 			echo json_encode($ret);
 		}
@@ -19,13 +19,13 @@ function on_json_request(callable $handler) {
 
 function on_json_request_with_db(callable $handler) {
 	header('content-type: application/json');
-	$requestData = json_decode(file_get_contents('php://input'), true);
+	$request_data = json_decode(file_get_contents('php://input'), true);
 	try {
 		$db = open_db();
 		if (!$db) {
 			throw new Exception('Database could not be opened.');
 		}
-		$ret = $handler($requestData, $db);
+		$ret = $handler($request_data, $db);
 		if ($ret) {
 			echo json_encode($ret);
 		}

@@ -23,8 +23,9 @@ on_json_request_with_db(function (mixed $requestData, mysqli $db) {
   $stmt = $db->prepare('INSERT into Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?,?)');
   $stmt->bind_param('ssss', $first_name, $last_name, $login, $hashed_password);
   $success = $stmt->execute();
-}
                         
 return [
   "result" => $success
 ];
+  
+}

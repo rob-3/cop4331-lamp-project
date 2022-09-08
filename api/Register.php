@@ -16,7 +16,6 @@ on_json_request_with_db(function (mixed $request_data, mysqli $db) {
   }
 
   $hashed_password = password_hash($request_data["password"], PASSWORD_DEFAULT);
-  $user_id = $request_data['user_id'];
   $first_name = $request_data['first_name'];
   $last_name = $request_data['last_name'];
 

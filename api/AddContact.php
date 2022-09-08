@@ -1,21 +1,20 @@
 <?php
 require_once('./Utils.php');
-on_json_request(function(mixed $requestData) {
-	$contact = $requestData['contact'];
-	$userId = $requestData['userId'];
+on_json_request_with_db(function(mixed $request_data, mysqli $db) {
+	$user_id = $request_data['userId'];
+	$contact = $request_data['contact'];
 
-	$db = open_db();
-	if (!$db) {
-		throw new Exception('Database connection failed!');
-	}
+	$first_name = $contact['firstName'];
+	$last_name = $contact['lastName'];
+	$email = $contact['email'];
+	$phone_number = $contact['phoneNumber'];
 
-	$stmt = $db->prepare('INSERT into Contacts (UserId,Name) VALUES(?,?)');
-	$stmt->bind_param('ss', $userId, $contact);
-	$stmt->execute();
+	$stmt = $db->prepare('INSERT into Contacts (UserID, FirstName, LastName, Email, PhoneNumber) VALUES(?,?,?,?,?)');
+	$stmt->bind_param('issss', $user_id, $first_name, $last_name, $email, $phone_number);
+	$success = $stmt->execute();
 	$stmt->close();
-	$db->close();
 
 	return [
-		'hello' => 'world'
+		"result" => $success
 	];
 });

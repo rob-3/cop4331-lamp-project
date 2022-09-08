@@ -11,7 +11,7 @@ on_json_request_with_db(function (mixed $request_data, mysqli $db) {
     $stmt->close();
     return [
       'result' => false,
-      'error' => $stmt
+      'error' => 'Username is already taken!'
     ];
   }
 

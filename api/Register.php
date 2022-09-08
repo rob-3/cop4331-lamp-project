@@ -28,4 +28,4 @@ return [
   "result" => $success
 ];
   
-}
+});

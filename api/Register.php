@@ -18,7 +18,7 @@ $login = $request_data['login'];
 
 
 $stmt = $db->prepare('INSERT into Users (UserID, FirstName, LastName, Login, Password) VALUES(?,?,?,?,?)');
-$stmt->bind_param('issss', $user_id, $first_name, $last_name, $login, $password);
+$stmt->bind_param('issss', $user_id, $first_name, $last_name, $login, $hashed_password);
 $success = $stmt->execute();
 $stmt->close();
 

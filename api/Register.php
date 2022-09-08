@@ -1,7 +1,7 @@
 <?php
 require_once('./Utils.php');
 on_json_request_with_db(function (mixed $request_data, mysqli $db) {
-  $login = $request_data['login'];
+  $login = $request_data['username'];
   $stmt = $db->prepare("select * from Users where Login=?");
   $stmt->bind_param("s", $login);
   $stmt->execute();

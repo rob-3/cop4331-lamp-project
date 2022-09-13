@@ -12,7 +12,7 @@ on_json_request_with_db(function (mixed $request_data, mysqli $db) {
 			'result' => true,
 			'user' => [
 				'firstName' => $data['FirstName'],
-				'lastName' => $data['FirstName'],
+				'lastName' => $data['LastName'],
 				'id' => $data['UserID'],
 			]
 		];

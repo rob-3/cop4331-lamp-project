@@ -21,7 +21,7 @@ async function doRegister()
         firstName,
         lastName,
     })
-  }).then(b => b.json());
+    }).then(b => b.json());
 
   if (!data.result)
     console.log("Username is taken!");

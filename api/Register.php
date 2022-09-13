@@ -16,8 +16,8 @@ on_json_request_with_db(function (mixed $request_data, mysqli $db) {
   }
 
   $hashed_password = password_hash($request_data["password"], PASSWORD_DEFAULT);
-  $first_name = $request_data['first_name'];
-  $last_name = $request_data['last_name'];
+  $first_name = $request_data['firstName'];
+  $last_name = $request_data['lastName'];
 
 
   $stmt = $db->prepare('INSERT into Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)');

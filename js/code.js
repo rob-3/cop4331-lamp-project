@@ -1,69 +1,113 @@
-const urlBase = 'http://159.89.91.64/LAMPAPI';
+const urlBase = 'http://159.89.91.64/api';
 const extension = 'php';
 
 let userId = 0;
 let firstName = "";
 let lastName = "";
 
-function doLogin()
+async function doRegister()
+{
+  userId = 0;
+  let firstName = document.getElementById("firstName").value;
+  let lastName = document.getElementById("lastName").value;
+	let login = document.getElementById("registerName").value;
+	let password = document.getElementById("registerPassword").value;
+     const data = await fetch("http://159.89.91.64/api/Register.php", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify({
+            username: login,
+            password: password,
+            first_name: firstName,
+            last_name: lastName,
+        })
+    }).then(b => b.json());
+  if(!data.result)
+    console.log("Username is taken bruh");
+  else
+    console.log("I think it registered");
+
+
+}
+
+async function doLogin()
 {
 
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
 //	var hash = md5( password );
-	
+
 	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = {login:login,password:password};
 //	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
-	
+
 	let url = urlBase + '/Login.' + extension;
 
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
-		
-				if( userId < 1 )
-				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
-					return;
-				}
-		
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
+    const data = await fetch("http://159.89.91.64/api/Login.php", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify({
+            username: login,
+            password: password,
+        })
+    }).then(b => b.json());
+    if(data.result)
+    {
+      console.log("Your name is " + data.user.firstName + " " + data.user.lastName + " and I think we logged in");
+      window.location.href = "color.html";
+    }
+    else
+      console.log(data.error);
 
-				saveCookie();
-	      alert("slay");
-				window.location.href = "color.html";
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("loginResult").innerHTML = err.message;
-	}
 
+
+// let xhr = new XMLHttpRequest();
+// 	xhr.open("POST", url, true);
+// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+// 	try
+// 	{
+// 		xhr.onreadystatechange = function()
+// 		{
+// 			if (this.readyState == 4 && this.status == 200)
+// 			{
+// 				let jsonObject = JSON.parse( xhr.responseText );
+// 				userId = jsonObject.id;
+//
+// 				if( userId < 1 )
+// 				{
+// 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+// 					return;
+// 				}
+//
+// 				firstName = jsonObject.firstName;
+// 				lastName = jsonObject.lastName;
+//
+// 				saveCookie();
+// 				window.location.href = "color.html";
+// 			}
+// 		};
+// 		xhr.send(jsonPayload);
+// 	}
+// 	catch(err)
+// 	{
+// 		document.getElementById("loginResult").innerHTML = err.message;
+// 	}
 }
 
 function saveCookie()
 {
 	let minutes = 20;
 	let date = new Date();
-	date.setTime(date.getTime()+(minutes*60*1000));	
+	date.setTime(date.getTime()+(minutes*60*1000));
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
@@ -72,7 +116,7 @@ function readCookie()
 	userId = -1;
 	let data = document.cookie;
 	let splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
+	for(var i = 0; i < splits.length; i++)
 	{
 		let thisOne = splits[i].trim();
 		let tokens = thisOne.split("=");
@@ -89,7 +133,7 @@ function readCookie()
 			userId = parseInt( tokens[1].trim() );
 		}
 	}
-	
+
 	if( userId < 0 )
 	{
 		window.location.href = "index.html";
@@ -118,15 +162,15 @@ function addColor()
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/AddColor.' + extension;
-	
+
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function() 
+		xhr.onreadystatechange = function()
 		{
-			if (this.readyState == 4 && this.status == 200) 
+			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("colorAddResult").innerHTML = "Color has been added";
 			}
@@ -137,33 +181,33 @@ function addColor()
 	{
 		document.getElementById("colorAddResult").innerHTML = err.message;
 	}
-	
+
 }
 
 function searchColor()
 {
 	let srch = document.getElementById("searchText").value;
 	document.getElementById("colorSearchResult").innerHTML = "";
-	
+
 	let colorList = "";
 
 	let tmp = {search:srch,userId:userId};
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/SearchColors.' + extension;
-	
+
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
 	{
-		xhr.onreadystatechange = function() 
+		xhr.onreadystatechange = function()
 		{
-			if (this.readyState == 4 && this.status == 200) 
+			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
 				let jsonObject = JSON.parse( xhr.responseText );
-				
+
 				for( let i=0; i<jsonObject.results.length; i++ )
 				{
 					colorList += jsonObject.results[i];
@@ -172,7 +216,7 @@ function searchColor()
 						colorList += "<br />\r\n";
 					}
 				}
-				
+
 				document.getElementsByTagName("p")[0].innerHTML = colorList;
 			}
 		};
@@ -182,7 +226,7 @@ function searchColor()
 	{
 		document.getElementById("colorSearchResult").innerHTML = err.message;
 	}
-	
+
 }
 
 /*
@@ -191,7 +235,7 @@ function searchColor()
  * Call these functions with dummy data for now, and it will be easy to write
  * the real implementation once the backend is done.
  *
- * You can test network and server errors 
+ * You can test network and server errors
  */
 
 // set to true to cause network errors for testing
@@ -200,7 +244,7 @@ const networkErrors = false;
 // set to true to cause server errors for testing
 const serverErrors = false;
 
-/** 
+/**
  * Create a contact.
  * @param {number} userId The user's ID
  * @param {Contact} contact
@@ -215,7 +259,7 @@ function addContact(userId, contact) {
 	return Promise.resolve(new Response(null, { status: 200, statusText: "OK" }));
 }
 
-/** 
+/**
  * Delete a contact.
  * @param {number} userId The user's ID
  * @param {number} contactId
@@ -232,7 +276,7 @@ function deleteContact(userId, contactId) {
 	return Promise.resolve(new Response(null, { status: 200, statusText: "OK" }));
 }
 
-/** 
+/**
  * Update a contact.
  * @param {number} userId The user's ID
  * @param {Contact} newContact a _complete_ Contact object, including id and any updated values
@@ -247,7 +291,7 @@ function editContact(userId, newContact) {
 	return Promise.resolve(new Response(null, { status: 200, statusText: "OK" }));
 }
 
-/** 
+/**
  * Returns randomly some contacts, for now.
  * @param {number} userId The user's ID
  * @param {number} n How many contacts to fetch at most
@@ -256,7 +300,7 @@ function getContacts(userId, n) {
 	return searchContacts(userId, "", n);
 }
 
-/** 
+/**
  * Returns randomly some contacts, for now.
  * @param {number} userId The user's ID
  * @param {string} query Can be empty to just get in order.

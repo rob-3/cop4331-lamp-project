@@ -1,12 +1,15 @@
 body {
     font-size: 14px;
     background-image: url(Background.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 .v2_32 {
     width: 100%;
     height: 1024px;
-    background: rgba(132, 122, 122, 1);
+    background:transparent;
     opacity: 1;
     position: relative;
     top: 0px;
@@ -17,10 +20,7 @@ body {
 .v2_33 {
     width: 100%;
     height: 100%;
-    background: url(Background.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 1px;
@@ -54,6 +54,9 @@ body {
 }
 
 input[type=FirstName] {
+    border: 1px solid black;
+    margin: auto;
+    display: block;
     font-size: 32px;
     font-family: Ubuntu;
     text-align: center;
@@ -62,9 +65,9 @@ input[type=FirstName] {
     height: 100px;
     background: rgba(87, 143, 175, 1);
     opacity: 1;
-    position: absolute;
-    top: 92px;
-    left: 472px;
+    position: relative;
+   /* top: 92px;
+    left: 472px;*/
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -73,6 +76,9 @@ input[type=FirstName] {
 }
 
 input[type=LastName] {
+    border: 1px solid black;
+    margin: auto;
+    display: block;
     font-size: 32px;
     font-family: Ubuntu;
     text-align: center;
@@ -81,9 +87,9 @@ input[type=LastName] {
     height: 100px;
     background: rgba(87, 143, 175, 1);
     opacity: 1;
-    position: absolute;
-    top: 236px;
-    left: 472px;
+    position: relative;
+    /*top: 236px;
+    left: 472px;*/
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -92,6 +98,9 @@ input[type=LastName] {
 }
 
 input[type=Username] {
+    margin: auto;
+    border: 1px solid black;
+    display: block;
     font-size: 32px;
     font-family: Ubuntu;
     text-align: center;
@@ -100,9 +109,9 @@ input[type=Username] {
     height: 100px;
     background: rgba(87, 143, 175, 1);
     opacity: 1;
-    position: absolute;
-    top: 374px;
-    left: 472px;
+    position: relative;
+    /*top: 374px;
+    left: 472px;*/
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -111,6 +120,9 @@ input[type=Username] {
 }
 
 input[type=Password] {
+    margin: auto;
+    border: 1px solid black;
+    display: block;
     font-size: 32px;
     font-family: Ubuntu;
     text-align: center;
@@ -119,9 +131,9 @@ input[type=Password] {
     height: 100px;
     background: rgba(87, 143, 175, 1);
     opacity: 1;
-    position: absolute;
-    top: 518px;
-    left: 472px;
+    position: relative;
+    /*top: 518px;
+    left: 472px;*/
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -129,14 +141,32 @@ input[type=Password] {
     overflow: hidden;
 }
 
+.passwordRequirements {
+    margin: auto;
+    display: block;
+    width: 217px;
+    color: rgba(0, 0, 0, 1);
+    position: relative;
+  /*  top: 626px;
+    left: 616px;*/
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+}
+
 input[type=submit] {
+    margin: auto;
+    display: block;
+    border: 1px solid black;
     text-decoration: underline;  
     border: none;
     background: transparent;
     width: 210px;
-    top: 770px;;
-    left: 620px;
-    position: absolute;
+    /*top: 770px;
+    left: 620px;*/
+    position: relative;
     font-size: 32px;
     font-family: Ubuntu;
     font-weight: Regular;
@@ -145,17 +175,4 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background: grey;
-}
-
-.passwordRequirements {
-    width: 217px;
-    color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 626px;
-    left: 616px;
-    font-family: Inter;
-    font-weight: Regular;
-    font-size: 20px;
-    opacity: 1;
-    text-align: left;
 }

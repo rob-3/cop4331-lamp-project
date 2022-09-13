@@ -10,24 +10,23 @@ async function doRegister()
 	let login = document.getElementById("registerName").value;
 	let password = document.getElementById("registerPassword").value;
 
-     const data = await fetch("/api/Register.php", {
-        method: "POST",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: JSON.stringify({
-            username: login,
-            password: password,
-            first_name: firstName,
-            last_name: lastName,
-        })
-    }).then(b => b.json());
-  if(!data.result)
-    console.log("Username is taken bruh");
+  const data = await fetch("/api/Register.php", {
+    method: "POST",
+    headers: {
+        "content-type": "application/json",
+    },
+    body: JSON.stringify({
+        username: login,
+        password,
+        firstName,
+        lastName,
+    })
+  }).then(b => b.json());
+
+  if (!data.result)
+    console.log("Username is taken!");
   else
-    console.log("I think it registered");
-
-
+    console.log("Registerd!");
 }
 
 async function doLogin()
@@ -38,19 +37,22 @@ async function doLogin()
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
 
-    const data = await fetch("/api/Login.php", {
-        method: "POST",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: JSON.stringify({
-            username: login,
-            password: password,
-        })
-    }).then(b => b.json());
-    if(data.result)
+  const data = await fetch("/api/Login.php", {
+    method: "POST",
+    headers: {
+        "content-type": "application/json",
+    },
+    body: JSON.stringify({
+        username: login,
+        password,
+        firstName,
+        lastName,
+    })
+  }).then(b => b.json());
+
+    if (data.result)
     {
-      console.log("Your name is " + data.user.firstName + " " + data.user.lastName + " and I think we logged in");
+      console.log("Your name is " + data.user.firstName + " " + data.user.lastName + " and you have logged in.");
       window.location.href = "color.html";
     }
     else

@@ -1,0 +1,103 @@
+body {
+    font-size: 14px;
+    background-image: url(Background.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.v2_32 {
+    margin: auto;
+    display: block;
+    width: 100%;
+    height: 1024px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.v2_33 {
+    margin: auto;
+    display: block;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.form_holder {
+    width: 658px;
+    height: 430px;
+    background: rgba(217, 217, 217, 1);
+    position: relative;
+    margin: auto;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: 35px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+::placeholder {
+    font-size: 32px;
+    font-family: Ubuntu, sans-serif;
+    text-align: center;
+    color: black;
+    opacity: 0.5;
+}
+
+input[type=text] {
+    border: 1px solid black;
+    margin: auto;
+    display: block;
+    font-size: 32px;
+    font-family: Ubuntu, sans-serif;
+    text-align: center;
+    color: black;
+    background: rgba(87, 143, 175, 1);
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+input[type=password] {
+    margin: auto;
+    border: 1px solid black;
+    display: block;
+    font-size: 32px;
+    font-family: Ubuntu, sans-serif;
+    text-align: center;
+    color: black;
+    background: rgba(87, 143, 175, 1);
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.passwordRequirements {
+    margin: auto;
+    display: block;
+    width: 217px;
+    color: rgba(0, 0, 0, 1);
+    position: relative;
+    font-family: Ubuntu, sans-serif;
+    font-weight: Regular;
+    font-size: 20px;
+    text-align: left;
+}
+
+input[type=submit] {
+    margin: auto;
+    display: block;
+    border: 1px solid black;
+    text-decoration: underline;  
+    border: none;
+    background: transparent;
+    position: relative;
+    font-size: 32px;
+    font-family: Ubuntu, sans-serif;
+    font-weight: Regular;
+}
+
+input[type=submit]:hover {
+    background: grey;
+}

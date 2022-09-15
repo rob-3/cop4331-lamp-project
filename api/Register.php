@@ -16,10 +16,6 @@ on_json_request_with_db(function (mixed $request_data, mysqli $db) {
   }
 
   $password = $request_data["password"];
-  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-  $first_name = $request_data['firstName'];
-  $last_name = $request_data['lastName'];
-
   if ($login === "" || $password === "")
   {
     $stmt->close();
@@ -28,6 +24,10 @@ on_json_request_with_db(function (mixed $request_data, mysqli $db) {
       'error' => 'Username or password must not be the empty string!'
     ];
   }
+
+  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+  $first_name = $request_data['firstName'];
+  $last_name = $request_data['lastName'];
 
   $stmt = $db->prepare('INSERT into Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)');
   $stmt->bind_param('ssss', $first_name, $last_name, $login, $hashed_password);

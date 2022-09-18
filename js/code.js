@@ -24,6 +24,7 @@ async function doRegister() {
 
   if (!data.result) console.log("Username is taken!");
   else console.log("Registerd!");
+
 }
 
 async function doLogin() {
@@ -45,7 +46,6 @@ async function doLogin() {
       lastName,
     }),
   }).then((b) => b.json());
-
   if (data.result) {
     console.log(
       "Your name is " +
@@ -54,7 +54,7 @@ async function doLogin() {
         data.user.lastName +
         " and you have logged in."
     );
-    window.location.href = "color.html";
+    window.location.href = "LandingPage.html";
   } else console.log(data.error);
 }
 
@@ -307,3 +307,37 @@ function _getRandomContacts() {
       ]
     : [];
 }
+
+async function loadIntoTable(){
+  const data = await fetch("/api/SearchContacts.php", {
+    method: "POST",
+    headers: {
+        "content-type": "application/json",
+    },
+    body: JSON.stringify({
+        query: "rob",
+        userId: 1,
+    })
+}).then(b => b.json());
+
+let tab = 
+        `<tr>
+          <th>Name</th>
+          <th>Office</th>
+          <th>Position</th>
+          <th>Salary</th>
+         </tr>`;
+    
+    // Loop to access all rows 
+    for (let r of data.contacts) {
+        tab += `<tr> 
+    <td>${r.FirstName} </td>
+    <td>${r.LastName}</td>
+    <td>${r.Email}</td> 
+    <td>${r.phone}</td>          
+</tr>`;
+    }
+    // Setting innerHTML as tab variable
+    document.getElementById("cont").innerHTML = tab;    
+    
+}   

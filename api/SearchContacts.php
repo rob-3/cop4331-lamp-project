@@ -26,5 +26,5 @@ on_json_request_with_db(function (mixed $requestData, mysqli $db) {
 	$stmt->close();
 	$db->close();
 
-	return [ 'contacts' => $contacts ];
+	return [ 'contacts' => $contacts_with_fixed_casing ];
 });

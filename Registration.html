@@ -3,33 +3,31 @@
 
 <head>
   <title>Group 21 - Contact Book Registration</title>
-  <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/Registration.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
+  <link href="css/Registration.css" rel="stylesheet">
   <script type="text/javascript" src="js/code.js"></script>
 </head>
 
 <body>
   <div class="v2_32">
     <div class="form_holder">
-        <br>
+      <h1>Signup</h1>
       <input type="text" id="firstName" placeholder="First Name" required>
-        <br>
       <input type="text" id="lastName" placeholder="Last Name" required>
-        <br>
       <input type="text" id="registerName" placeholder="Username" required>
-        <br>
       <input type="password" id="registerPassword" placeholder="Password" required>
-        <br>
       <span class="passwordRequirements"> Requirements:
         <br> 8 characters
         <br> 1 number
         <br> 1 upper case character
         <br> 1 lower case character
       </span>
-        <br>
-      <a href="login.html">
-        <button type="button" class="createAccount" onclick="doRegister()">Create Account</button>
-      </a>
+      <div class="buttons">
+        <button type="button" class="button" onclick="doRegister()">Create Account</button>
+        <a href="index.html">
+          <button type="button" class="button">Return to Login</button>
+        </a>
+      </div>
     </div>
   </div>
 </body>

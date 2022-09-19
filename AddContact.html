@@ -3,30 +3,26 @@
 
 <head>
     <title>Add New Contact</title>
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/AddContact.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
+    <link href="css/AddContact.css" rel="stylesheet">
     <script type="text/javascript" src="js/code.js"></script>
 </head>
 
 <body>
     <div class="v2_32">
         <div class="form_holder">
-            <br>
             <h1>Create New Contact</h1>
             <span class="Details"><em>Enter new contact information below.</em></span>
-            <br>
             <input type="text" id="firstName" placeholder="First Name" required>
-            <br>
             <input type="text" id="lastName" placeholder="Last Name" required>
-            <br>
             <input type="text" id="phoneNumber" placeholder="Phone Number" required>
-            <br>
             <input type="email" id="contactEmail" placeholder="E-Mail Address" required>
-            <br>
-            <button type="button" class="addContact" onclick="addContact()">Create Contact</button>
-            <a href="LandingPage.html">
-                <button type="button" class="menuReturn">Return to Menu</button>
-            </a>
+            <div class="buttons">
+                <button type="button" class="button" onclick="addContact()">Create Contact</button>
+                <a href="LandingPage.html">
+                    <button type="button" class="button">Return to Menu</button>
+                </a>
+            </div>
         </div>
     </div>
 </body>

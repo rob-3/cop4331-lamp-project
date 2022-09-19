@@ -1,134 +1,88 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
+    width: 100%;
+    height: 100%;
     font-size: 14px;
-    background-image: linear-gradient(to bottom right, rgb(37,51,120), purple);
+    background-image: linear-gradient(to bottom right, rgb(37, 51, 120), purple);
 }
 
 .v2_32 {
-    margin: auto;
-    display: block;
     width: 100%;
-    height: 1024px;
-    background: transparent;
-    position: relative;
-    overflow: hidden;
+    height: 100%;
+    display: grid;
+    place-items: center;
 }
 
 .form_holder {
-    width: 658px;
-    height: 430px;
-    background: rgba(217, 217, 217, 1);
-    position: relative;
-    margin: auto;
-    display: block;
-    border: 1px solid rgba(0, 0, 0, 1);
-    border-radius: 35px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
+    width: min(95%, 600px);
+    padding: 1rem 2rem 2rem;
+    background: rgb(231, 232, 243);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 1rem;
 }
 
 h1 {
-    margin: auto;
-    display: block;
-    width: 407px;
-    color: rgba(0, 0, 0, 1);
-    position: relative;
-    font-family: Ubuntu, sans-serif;
-    font-weight: Regular;
     font-size: 32px;
-    text-align: center;
-  }
-
-.Details {
-    margin: auto;
-    display: block;
-    width: 407px;
-    color: rgba(0, 0, 0, 1);
-    position: relative;
-    font-family: Ubuntu, sans-serif;
+    font-family: Ubuntu;
     font-weight: Regular;
-    font-size: 20px;
+}
+
+input{
+    border: 0.5px solid black;
+    width: 80%;
+    height: 2em;
+    background-color: white;
     text-align: center;
-    text-decoration: italic;
+    border-radius: 0.7rem;
+    font-size: 32px;
+    color: black;
+    text-align: left;
+    padding-left: 0.7em;
 }
 
 .Details {
-    margin: auto;
-    display: block;
-    width: 407px;
-    color: rgba(0, 0, 0, 1);
-    position: relative;
-    font-family: Ubuntu, sans-serif;
+    margin-bottom: 1rem;
+    font-family: Ubuntu;
     font-weight: Regular;
-    font-size: 20px;
-    text-align: center;
+    font-size: 25px;
 }
 
-::placeholder {
-    font-size: 32px;
-    font-family: Ubuntu, sans-serif;
-    text-align: center;
-    color: white;
-    opacity: 0.5;
-}
-
-input[type=text] {
-    border: 1px solid black;
-    margin: auto;
-    display: block;
-    font-size: 32px;
-    font-family: Ubuntu, sans-serif;
-    text-align: center;
-    color: white;
-    background: rgba(37,51,120);
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-input[type=email] {
-    border: 1px solid black;
-    margin: auto;
-    display: block;
-    font-size: 32px;
-    font-family: Ubuntu, sans-serif;
-    text-align: center;
-    color: white;
-    background: rgba(37,51,120);
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.addContact {
-    margin: auto;
-    display: block;
-    text-decoration: underline;
+.button {
     border: none;
-    background: transparent;
-    position: relative;
+    background: black;
+    border-radius: 0.7rem;
+    padding: 0.85rem 1.2rem;
     font-size: 32px;
-    font-family: Ubuntu, sans-serif;
+    font-family: Ubuntu;
     font-weight: Regular;
-   /* display: inline;*/
-  }
-  
-  .addContact:hover {
-    background: grey;
-  }
-  
-  .menuReturn {
-    margin: auto;
-    display: block;
-    text-decoration: underline;
-    border: none;
+    color: #eeeeee;
+    border: 1px solid black;
+    transition: all;
+    transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition-duration: .15s;
+}
+
+.button:hover {
     background: transparent;
-    position: relative;
-    font-size: 32px;
-    font-family: Ubuntu, sans-serif;
-    font-weight: Regular;
-    /*display: inline;  */
-  }
-  
-  .menuReturn:hover {
-    background: grey;
-  }
+    color: black;
+}
+
+
+.buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}

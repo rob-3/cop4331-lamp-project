@@ -1,91 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
+    width: 100%;
+    height: 100%;
     font-size: 14px;
-    background-image: linear-gradient(to bottom right, rgb(37,51,120), purple);
+    background-image: linear-gradient(to bottom right, rgb(37, 51, 120), purple);
 }
 
 .v2_32 {
-    margin: auto;
-    display: block;
     width: 100%;
-    height: 1024px;
-    background: transparent;
-    position: relative;
-    overflow: hidden;
+    height: 100%;
+    display: grid;
+    place-items: center;
 }
 
 .form_holder {
-    width: 658px;
-    height: 430px;
-    background: rgba(217, 217, 217, 1);
-    position: relative;
-    margin: auto;
-    display: block;
-    border: 1px solid rgba(0, 0, 0, 1);
-    border-radius: 35px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
+    width: min(95%, 600px);
+    padding: 1rem 2rem 2rem;
+    background: rgb(231, 232, 243);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 1rem;
 }
 
-::placeholder {
+h1 {
     font-size: 32px;
-    font-family: Ubuntu, sans-serif;
-    text-align: center;
-    color: white;
-    opacity: 0.5;
+    font-family: Ubuntu;
+    font-weight: Regular;
+    margin-bottom: 2rem;
 }
 
-input[type=text] {
-    border: 1px solid black;
-    margin: auto;
-    display: block;
-    font-size: 32px;
-    font-family: Ubuntu, sans-serif;
+input{
+    border: 0.5px solid black;
+    width: 80%;
+    height: 2em;
+    background-color: white;
     text-align: center;
-    color: white;
-    background: rgba(37,51,120);
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-input[type=password] {
-    margin: auto;
-    border: 1px solid black;
-    display: block;
+    border-radius: 0.7rem;
     font-size: 32px;
-    font-family: Ubuntu, sans-serif;
-    text-align: center;
-    color: white;
-    background: rgba(37,51,120);
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
+    color: black;
+    text-align: left;
+    padding-left: 0.7em;
 }
 
 .passwordRequirements {
-    margin: auto;
-    display: block;
-    width: 217px;
+    width: 207px;
     color: rgba(0, 0, 0, 1);
-    position: relative;
-    font-family: Ubuntu, sans-serif;
+    font-family: Ubuntu;
     font-weight: Regular;
+    margin-bottom: 2rem;
     font-size: 20px;
     text-align: left;
 }
 
-.createAccount {
-    margin: auto;
-    display: block;
-    text-decoration: underline;  
+.button {
     border: none;
-    background: transparent;
-    position: relative;
+    background: black;
+    border-radius: 0.7rem;
+    padding: 0.85rem 1.2rem;
     font-size: 32px;
-    font-family: Ubuntu, sans-serif;
+    font-family: Ubuntu;
     font-weight: Regular;
+    color: #eeeeee;
+    border: 1px solid black;
+    transition: all;
+    transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition-duration: .15s;
 }
 
-.createAccount:hover {
-    background: grey;
+.button:hover {
+    background: transparent;
+    color: black;
+}
+
+
+.buttons {
+    display: flex;
+    gap: 1rem;
 }

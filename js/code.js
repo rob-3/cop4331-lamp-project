@@ -2,16 +2,18 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
-async function doRegister() {
-    userId = 0;
+function passwordRequirements() {
     let upperCase;
     let lowerCase;
-    let passwordLength;
+    let passwordLength = true
     let passwordNumber;
-    let firstName = document.getElementById("firstName").value;
-    let lastName = document.getElementById("lastName").value;
-    let login = document.getElementById("registerName").value;
-    let password = document.getElementById("registerPassword").value;
+
+    if (password.length < 8) {
+        passwordLength = false
+    }
+    else {
+        passwordLength = true;
+    }
 
     for (let i = 0; i < password.length; i++) {
         if ((passwordNumber == false) && (!isNan(password[i]))) {
@@ -25,18 +27,21 @@ async function doRegister() {
         }
     }
 
-    if (password.length >= 8) {
-        document.getElementById("registerPassword").value = "Password length too short."
+    if (passwordLength && passwordNumber && upperCase && lowerCase) {
+        return true;
     }
-    if (passwordNumber) {
-        document.getElementById("registerPassword").value = "Password must contain a number"
+    else {
+        return false;
     }
-    if (upperCase == false) {
-        document.getElementById("registerPassword").value = "Password must contain an uppercase character.";
-    }
-    if (lowerCase == false) {
-        document.getElementById("registerPassword").value = "Password must contain an lowercase character.";
-    }
+}
+
+async function doRegister() {
+    userId = 0;
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let login = document.getElementById("registerName").value;
+    let password = document.getElementById("registerPassword").value;
+
     const data = await fetch("/api/Register.php", {
         method: "POST",
         headers: {
@@ -50,11 +55,16 @@ async function doRegister() {
         }),
     }).then((b) => b.json());
 
-    if (data.result) {
-        console.log("Account created successfully!");
-        window.location.href = "index.html";
-    } else console.log(data.error);
-
+    if (passwordRequirements()) {
+        if (data.result) {
+            console.log("Account created successfully!");
+            window.location.href = "index.html";
+        }
+    }
+    else {
+        console.log("Password must meet all requirements!");
+        window.location.href = "Registration.html";
+    }
 }
 
 async function doLogin() {

@@ -10,22 +10,28 @@
 
 <body>
   <div class="v2_32">
-    <div class="v2_33">
-      <div class="form_holder">
-      
-        <input type="FirstName" id="firstName" placeholder="First Name" required>
-        <input type="LastName" id="lastName" placeholder="Last Name" required>
-        <input type="Username" id="registerName" placeholder="Username" required>
-        <input type="Password" id="registerPassword" placeholder="Password" required>
-        <span class="passwordRequirements"> Requirements:
-          <br> 8 digits
-          <br> 1 number
-          <br> 1 upper case character
-          <br> 1 lower case character
-        </span>
-        <button type= "button" class ="create" onclick = "doRegister()">Create Account</button>
-      
+    <div class="form_holder">
+        <br>
+      <input type="text" id="firstName" placeholder="First Name" required>
+        <br>
+      <input type="text" id="lastName" placeholder="Last Name" required>
+        <br>
+      <input type="text" id="registerName" placeholder="Username" required>
+        <br>
+      <input type="password" id="registerPassword" placeholder="Password" required>
+        <br>
+      <span class="passwordRequirements"> Requirements:
+        <br> 8 characters
+        <br> 1 number
+        <br> 1 upper case character
+        <br> 1 lower case character
+      </span>
+        <br>
+      <a href="login.html">
+        <button type="button" class="createAccount" onclick="doRegister()">Create Account</button>
+      </a>
     </div>
-    </div>
+  </div>
 </body>
+
 </html>

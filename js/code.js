@@ -322,18 +322,18 @@ async function loadIntoTable(){
 
 let tab = 
         `<tr>
-          <th>Name</th>
-          <th>Office</th>
-          <th>Position</th>
-          <th>Salary</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
          </tr>`;
     
     // Loop to access all rows 
     for (let r of data.contacts) {
         tab += `<tr> 
-    <td>${r.FirstName} </td>
-    <td>${r.LastName}</td>
-    <td>${r.Email}</td> 
+    <td>${r.firstName} </td>
+    <td>${r.lastName}</td>
+    <td>${r.email}</td> 
     <td>${r.phone}</td>          
 </tr>`;
     }

@@ -13,14 +13,16 @@
 
 <div id="accessUIDiv">
   <div class = "container">
-      <div class = "column" style = "background-color: aqua;">
-        <input type = "search" oninput = "searchContacts()" id = "firstName" placeholder="First Name">
-        <input type = "search" oninput = "searchContacts()" id = "lastName" placeholder="Last Name">
-        <button type= "button" id="logoutButton" class="buttons" onclick="doLogout();">Search</button>
+      <div class = "column">
+
+        <!--onkeyup to be implemented at a later date-->
+        <input type = "search" id = "firstName" placeholder= "First Name">
+        <input type = "search" id = "lastName" placeholder= "Last Name">
+        
         <button type= "button" id="logoutButton" class="buttons">Add Contact</button>
         <button type= "button" id="logoutButton" class="buttons">Edit Contact</button>
         <button type= "button" id="logoutButton" class="buttons">Delete Contact</button>
-        <button type= "button" id="logoutButton" class="buttons">Log Out</button>
+        <button type= "button" id="logoutButton" class="buttons" onclick="doLogout();">Log Out</button>
       </div>
       <div class = "column" style="background-color: orange;">
         <table id = "cont"></table>

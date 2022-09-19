@@ -24,7 +24,6 @@ on_json_request_with_db(function (mixed $requestData, mysqli $db) {
 	}
 
 	$stmt->close();
-	$db->close();
 
 	return [ 'contacts' => $contacts ];
 });

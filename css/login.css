@@ -34,11 +34,11 @@ body {
   border-radius: 1rem;
 }
 
-h1{
-  text-align: center;
+h1 {
   font-size: 32px;
   font-family: Ubuntu;
   font-weight: Regular;
+  margin-bottom: 2rem;
 }
 
 input {
@@ -56,14 +56,29 @@ input {
 
 .button {
   border: none;
-  background: #EA638C;
+  background: black;
   border-radius: 0.7rem;
   padding: 0.85rem 1.2rem;
   font-size: 32px;
   font-family: Ubuntu;
   font-weight: Regular;
+  color: #eeeeee;
+  border: 1px solid black;
+  transition: all;
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition-duration: .15s;
 }
 
 .button:hover {
-  background: #EE81A2;
+  background: transparent;
+  color: black;
+}
+
+#loginPassword {
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
 }

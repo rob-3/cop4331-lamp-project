@@ -15,14 +15,14 @@ body {
     background-image: linear-gradient(to bottom right, rgb(37, 51, 120), purple);
 }
 
-.v2_32 {
+.container {
     width: 100%;
     height: 100%;
     display: grid;
     place-items: center;
 }
 
-.form_holder {
+.squarebg {
     width: min(95%, 600px);
     padding: 1rem 2rem 2rem;
     background: rgb(231, 232, 243);
@@ -40,19 +40,6 @@ h1 {
     font-weight: Regular;
 }
 
-input{
-    border: 0.5px solid black;
-    width: 80%;
-    height: 2em;
-    background-color: white;
-    text-align: center;
-    border-radius: 0.7rem;
-    font-size: 32px;
-    color: black;
-    text-align: left;
-    padding-left: 0.7em;
-}
-
 .Details {
     margin-bottom: 1rem;
     font-family: Ubuntu;
@@ -60,7 +47,30 @@ input{
     font-size: 25px;
 }
 
+a {
+    
+    font-family: Ubuntu;
+    font-weight: Regular;
+    font-size: 20px;
+}
+
+input{
+    border: 0.5px solid black;
+    width: 80%;
+    height: 1.6em;
+    background-color: white;
+    text-align: center;
+    border-radius: 0.7rem;
+    font-size: 32px;
+    color: black;
+    text-align: left;
+    padding-left: 0.7em;
+    font-family: Ubuntu;
+    font-weight: Regular;
+}
+
 .button {
+    margin-bottom: 1rem;
     border: none;
     background: black;
     border-radius: 0.7rem;
@@ -80,9 +90,6 @@ input{
     color: black;
 }
 
-
-.buttons {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
+#contactEmail{
+    margin-bottom: 1rem;
 }

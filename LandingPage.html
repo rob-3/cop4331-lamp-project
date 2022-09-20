@@ -2,30 +2,25 @@
 <html lang="en">
   <head>
     <title>Contact Manager</title>
-    <script src="js/landing.js"></script>
     <link href="css/landing.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <script defer src="js/landing.js"></script>
   </head>
   <body>
-    <h1 id="title">Welcome (User)</h1>
-
-    <div id="accessUIDiv">
-      <div class = "container">
-        <div class = "column">
-
+    <div class="center">
+      <div id="accessUIDiv">
+        <h1 id="title">Welcome Rob!</h1>
+        <div class="column">
           <!--onkeyup to be implemented at a later date-->
-          <input type = "search" id = "firstName" placeholder= "First Name">
-          <input type = "search" id = "lastName" placeholder= "Last Name">
-
+          <input class="searchBar" type="text" placeholder="First Name">
+            <!--
           <button type= "button" id="logoutButton" class="buttons">Add Contact</button>
           <button type= "button" id="logoutButton2" class="buttons">Edit Contact</button>
           <button type= "button" id="logoutButton3" class="buttons">Delete Contact</button>
           <button type= "button" id="logoutButton4" class="buttons" onclick="doLogout();">Log Out</button>
+            -->
         </div>
-        <div class = "column" style="background-color: orange;">
-          <table id = "cont"></table>
-        </div>
-
+        <table id="contacts"></table>
       </div>
     </div>
   </body>

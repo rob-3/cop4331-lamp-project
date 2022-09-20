@@ -26,6 +26,7 @@ body {
 #accessUIDiv {
     font-size: 30px;
     width: 85%;
+    height: 604px;
     /*height: calc(85% - 96px);*/
     padding: 25px;
     background-color: rgba(217, 217, 217, 1);
@@ -113,3 +114,7 @@ tr:first-child {
     }
 }
 */
+
+.hidden {
+    visibility: hidden;
+}

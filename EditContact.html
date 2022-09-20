@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Edit Contact</title>
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/EditContact.css">
-    <script type="text/javascript" src="js/code.js"></script>
 </head>
 
 <body>
-    <div class="v2_32">
-        <div class="form_holder">
-            <br>
+    <div class="container">
+        <div class="squarebg">
             <h1>Edit Contact Details</h1>
-            <span class="Details"><em>Enter information to be replaced below.</em></span>
-            <br>
-            <input type="text" id="firstName" placeholder="First Name" required>
-            <br>
-            <input type="text" id="lastName" placeholder="Last Name" required>
-            <br>
-            <input type="text" id="phoneNumber" placeholder="Phone Number" required>
-            <br>
-            <input type="email" id="contactEmail" placeholder="E-Mail Address" required>
-            <br>
-            <button type="button" class="editContact" onclick="editContact()">Submit Changes</button>
-            <a href="LandingPage.html">
-                <button type="button" class="menuReturn">Return to Menu</button>
-            </a>
+                <div class="two-column-layout">
+                    <em id="leftHeader">Enter information to be replaced below.</em>
+                    <input class="inputbox" type="text" id="firstName" placeholder="First Name" required>
+                    <input class="inputbox" type="text" id="lastName" placeholder="Last Name" required>
+                    <input class="inputbox" type="text" id="phoneNumber" placeholder="Phone Number" required>
+                    <input class="inputbox" type="email" id="contactEmail" placeholder="E-Mail Address" required>
+                    <em id="rightHeader">Current</em>
+                    <div class="current" id="currentFirstname">Rob</div>
+                    <div class="current" id="currentLastname">Boyd</div>
+                    <div class="current" id="currentPhone">1234567890</div>
+                    <div class="current" id="currentEmail">abc123@example.com</div>
+                </div>
+                <button type="button" class="submitChanges" onclick="console.log('hi')">Submit Changes</button>
+                <a class="editContact" href="LandingPage.html">Return to Menu</a>
         </div>
     </div>
 </body>

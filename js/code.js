@@ -7,9 +7,6 @@ function passwordRequirements(password) {
   let lowerCase = false;
   let passwordNumber = false;
   let passwordLength = false;
-  let tempDigit;
-  let tempUpper;
-  let tempLower
 
   if (password.length >= 8) {
     passwordLength = true;
@@ -56,13 +53,17 @@ async function doRegister() {
       }),
     }).then((b) => b.json());
   }
+  else {
+    console.log("Password must meet all requirements!");
+    window.location.href = "Registration.html";
+  }
+
   if (data.result) {
     console.log("Account created successfully!");
     window.location.href = "index.html";
   }
   else {
-    console.log("Password must meet all requirements!");
-    window.location.href = "Registration.html";
+    console.log(data.error);
   }
 }
 
@@ -116,18 +117,29 @@ const serverErrors = false;
  * @param {number} userId The user's ID
  * @param {Contact} contact
  */
-function addContact(userId, contact) {
-  if (networkErrors) {
-    return Promise.reject(
-      new TypeError("NetworkError when attempting to fetch resource.")
-    );
-  }
-  if (serverErrors) {
-    return Promise.resolve(
-      new Response(null, { status: 500, statusText: "Internal server error" })
-    );
-  }
-  return Promise.resolve(new Response(null, { status: 200, statusText: "OK" }));
+async function addContact(userId, contact) {
+  userId = 0;
+  let firstName = document.getElementById("firstName").value;
+  let lastName = document.getElementById("lastName").value;
+  let contactEmail = document.getElementById("contactEmail").value;
+  let phoneNumber = document.getElementById("phoneNumber").value;
+
+  const data = await fetch("/api/AddContact.php", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      username: firstName,
+      lastName,
+      contactEmail,
+      phoneNumber,
+    }),
+  }).then((b) => b.json());
+  if (data.result) {
+    console.log("Contact Added Successfully!");
+    window.location.href = "LandingPage.html";
+  } else console.log(data.error);
 }
 
 /**

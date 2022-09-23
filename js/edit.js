@@ -14,7 +14,7 @@ async function editContacts(){
       
       const first = document.getElementById("firstName").value;
       const last = document.getElementById("lastName").value;
-      const mail = document.getElementById("email").value;
+      const mail = document.getElementById("contactEmail").value;
       const tele = document.getElementById("phoneNumber").value;
       
       if(first != data.contacts[0].firstName && first.length > 0){

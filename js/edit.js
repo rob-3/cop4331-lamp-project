@@ -29,3 +29,17 @@ const data = await fetch("/api/SearchContacts.php", {
         
   console.log(data.contacts[0]); 
 }
+
+async function deleteContact({ userId, contactId }) {
+    const data = await fetch("/api/DeleteContact.php", {
+        method: "DELETE",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify({
+            userId,
+            contactId,
+        })
+    }).then(b => b.json());
+    return data.result;
+}

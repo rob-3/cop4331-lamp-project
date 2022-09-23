@@ -130,16 +130,21 @@ async function addContact(userId, contact) {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      username: firstName,
-      lastName,
-      contactEmail,
-      phoneNumber,
+      userID: 1,
+      contact: {
+        firstName,
+        lastName,
+        contactEmail,
+        phoneNumber,
+      }
     }),
   }).then((b) => b.json());
+
   if (data.result) {
     console.log("Contact Added Successfully!");
-    window.location.href = "LandingPage.html";
+    window.location.href = "AddContact.html";
   } else console.log(data.error);
+
 }
 
 /**

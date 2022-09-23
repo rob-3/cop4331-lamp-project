@@ -106,17 +106,6 @@ function doLogout() {
   window.location.href = "index.html";
 }
 
-// set to true to cause network errors for testing
-const networkErrors = false;
-
-// set to true to cause server errors for testing
-const serverErrors = false;
-
-/**
- * Create a contact.
- * @param {number} userId The user's ID
- * @param {Contact} contact
- */
 async function addContact(userId, contact) {
   userId = 0;
   let firstName = document.getElementById("firstName").value;
@@ -145,83 +134,4 @@ async function addContact(userId, contact) {
     window.location.href = "AddContact.html";
   } else console.log(data.error);
 
-}
-
-/**
- * Delete a contact.
- * @param {number} userId The user's ID
- * @param {number} contactId
- */
-function deleteContact(userId, contactId) {
-  if (networkErrors) {
-    return Promise.reject(
-      new TypeError("NetworkError when attempting to fetch resource.")
-    );
-  }
-  if (serverErrors) {
-    return Math.random() > 0.5
-      ? Promise.resolve(new Response(JSON.stringify()))
-      : Promise.resolve(
-        new Response(null, {
-          status: 500,
-          statusText: "Internal server error",
-        })
-      );
-  }
-  return Promise.resolve(new Response(null, { status: 200, statusText: "OK" }));
-}
-
-/**
- * Update a contact.
- * @param {number} userId The user's ID
- * @param {Contact} newContact a _complete_ Contact object, including id and any updated values
- */
-function editContact(userId, newContact) {
-  if (networkErrors) {
-    return Promise.reject(
-      new TypeError("NetworkError when attempting to fetch resource.")
-    );
-  }
-  if (serverErrors) {
-    return Promise.resolve(
-      new Response(null, { status: 500, statusText: "Internal server error" })
-    );
-  }
-  return Promise.resolve(new Response(null, { status: 200, statusText: "OK" }));
-}
-
-/**
- * Returns randomly some contacts, for now.
- * @param {number} userId The user's ID
- * @param {number} n How many contacts to fetch at most
- */
-function getContacts(userId, n) {
-  return searchContacts(userId, "", n);
-}
-
-/**
- * Returns randomly some contacts, for now.
- * @param {number} userId The user's ID
- * @param {string} query Can be empty to just get in order.
- * @param {number} n How many contacts to fetch at most
- */
-function searchContacts(userId, query, n) {
-  if (networkErrors) {
-    return Promise.reject(
-      new TypeError("NetworkError when attempting to fetch resource.")
-    );
-  }
-  if (serverErrors) {
-    return Promise.resolve(
-      new Response(null, { status: 500, statusText: "Internal server error" })
-    );
-  }
-  return Promise.resolve(
-    new Response(
-      JSON.stringify({
-        contacts: _getRandomContacts().slice(0, n),
-      }),
-      { status: 200, statusText: "OK" }
-    )
-  );
 }

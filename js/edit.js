@@ -17,26 +17,15 @@ const data = await fetch("/api/SearchContacts.php", {
     console.log(data.contacts[0].contactId);*/
     
     const first = document.getElementById("firstName").value;
-    const last = document.getElementById("lastName");
-    const mail = document.getElementById("email");
-    const tele = document.getElementById("phoneNumber");
     
     if(first != data.contacts[0].firstName && first.length > 0){
-    	console.log("they are different!");
-        fetch("/api/SearchContacts.php", {
-    		method: "PATCH",
-    		headers: {
-        		"content-type": "application/json",
-    		},
-    		body: JSON.stringify({
-       	 		"firstName": first
-    		})
-	}).then(b => b.json())
-    }
+            console.log("they are different!"); 
+               
+}
         
   else{
     console.log("same");
     }
         
-
+  console.log(data.contacts[0]); 
 }

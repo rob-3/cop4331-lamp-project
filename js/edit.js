@@ -1,4 +1,3 @@
-
 async function editContacts(){
   const data = await fetch("/api/SearchContacts.php", {
       method: "POST",

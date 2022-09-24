@@ -38,7 +38,13 @@ h1 {
   font-size: 32px;
   font-family: Ubuntu;
   font-weight: Regular;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+p{
+  font-size: 18px;
+  font-family: Ubuntu;
+  font-weight: Regular;
 }
 
 input {
@@ -52,6 +58,8 @@ input {
   color: black;
   text-align: left;
   padding-left: 0.7em;
+  font-family: Ubuntu;
+  font-weight: Regular;
 }
 
 .button {
@@ -67,6 +75,7 @@ input {
   transition: all;
   transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   transition-duration: .15s;
+  margin-bottom: 2rem;
 }
 
 .button:hover {

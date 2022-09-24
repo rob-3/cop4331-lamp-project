@@ -3,35 +3,29 @@
 
 <head>
   <title>Group 21 - Contact Book Registration</title>
-  <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="Registration.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
+  <link href="css/Registration.css" rel="stylesheet">
+  <script type="text/javascript" src="js/code.js"></script>
 </head>
 
 <body>
-  <div class="v2_32">
-    <div class="v2_33">
-      <div class="form_holder">
-      <form action="http://159.89.91.64/api/Register.php">
-        <br>
-        <input type="text" id="FirstName" placeholder="First Name" required>
-        <br>
-        <input type="text" id="LastName" placeholder="Last Name" required>
-        <br>
-        <input type="text" id="Username" placeholder="Username" required>
-        <br>
-        <input type="password" id="password" placeholder="Password" required>
-        <br>
-        <span class="passwordRequirements"> Requirements:
-          <br> 8 characters
-          <br> 1 number
-          <br> 1 upper case character
-          <br> 1 lower case character
-        </span>
-        <br>
-        <input type="submit" value="Create Account">
-      </form>
+  <div class="container">
+    <div class="squarebg">
+      <h1>Signup</h1>
+      <input type="text" id="firstName" placeholder="First Name" required>
+      <input type="text" id="lastName" placeholder="Last Name" required>
+      <input type="text" id="registerName" placeholder="Username" required>
+      <input type="password" id="registerPassword" placeholder="Password" required>
+      <span class="passwordRequirements"> Requirements:
+        <br> 8 characters
+        <br> 1 number
+        <br> 1 upper case character
+        <br> 1 lower case character
+      </span>
+      <button type="button" class="button" onclick="doRegister()">Create Account</button>
+      <p>Already have an account? <a href="Registration.html">Login!</a></p>
     </div>
-    </div>
+  </div>
 </body>
-<script src = "code.js"></script>
+
 </html>

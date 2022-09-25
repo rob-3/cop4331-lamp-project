@@ -63,6 +63,6 @@ searchBar.addEventListener("keydown", () => {
   }, 200);
 });
 
-loadTable("");
+loadTable("", currentRequestId);
 
 document.querySelector('#title').innerHTML = title;

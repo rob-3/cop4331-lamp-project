@@ -7,7 +7,7 @@ async function editContact() {
   const email = document.getElementById("contactEmail").value;
   const phoneNumber = document.getElementById("phoneNumber").value;
 
-  const response = await fetch("/api/EditContact.php", {
+  await fetch("/api/EditContact.php", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -23,11 +23,11 @@ async function editContact() {
       },
     }),
   }).then((b) => b.json());
-  return response.result;
+  window.location.href = "/LandingPage.html"
 }
 
 async function deleteContact(){
-  const data = await fetch("/api/DeleteContact.php", {
+  await fetch("/api/DeleteContact.php", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -37,5 +37,5 @@ async function deleteContact(){
       contactId,
     }),
   }).then((b) => b.json());
-  return data.result;
+  window.location.href = "/LandingPage.html"
 }

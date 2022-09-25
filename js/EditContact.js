@@ -1,40 +1,13 @@
+const contactId = Number(new URL(window.location.href).searchParams.get("contactId"));
+const { id: userId } = JSON.parse(localStorage.getItem("user"));
+
 async function editContact() {
-  const data = await fetch("/api/SearchContacts.php", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      query: "rob",
-      userId: 1,
-    }),
-  }).then((b) => b.json());
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const email = document.getElementById("contactEmail").value;
+  const phoneNumber = document.getElementById("phoneNumber").value;
 
-  const first = document.getElementById("firstName").value;
-  const last = document.getElementById("lastName").value;
-  const mail = document.getElementById("contactEmail").value;
-  const tele = document.getElementById("phoneNumber").value;
-
-  if (first != data.contacts[0].firstName && first.length > 0) {
-    console.log("they are different!");
-  } else first = data.contacts[0].firstName;
-
-  if (last != data.contacts[0].lastName && last.length > 0)
-    console.log("they are different!");
-  else last = data.contacts[0].lastName;
-
-  if (mail != data.contacts[0].email && mail.length > 0) {
-    console.log("they are different!");
-  } else {
-    mail = data.contacts[0].mail;
-  }
-
-  if (tele != data.contacts[0].phoneNumber && tele.length > 0) {
-    console.log("they are different!");
-  } else {
-    tele = data.contacts[0].phoneNumber;
-  }
-  fetch("/api/EditContact.php", {
+  const response = await fetch("/api/EditContact.php", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -42,15 +15,17 @@ async function editContact() {
     body: JSON.stringify({
       userId: 1,
       contact: {
-        contactId: 567570,
-        firstName: first,
-        lastName: last,
-        email: mail,
-        phoneNumber: tele,
+        contactId,
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
       },
     }),
   }).then((b) => b.json());
+  return response.result;
 }
+
 async function deleteContact(){
   const data = await fetch("/api/DeleteContact.php", {
     method: "POST",
@@ -58,13 +33,9 @@ async function deleteContact(){
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      query: "rob",
-      userId: 1,
-      contact: {
-        contactId: 567570,
-      },
+      userId,
+      contactId,
     }),
   }).then((b) => b.json());
-
-console.log(data);
+  return data.result;
 }

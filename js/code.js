@@ -13,21 +13,18 @@ function passwordRequirements(password) {
   }
 
   for (let i = 0; i < password.length; i++) {
-    if (password[i] >= '0' && password[i] <= '9') {
+    if (password[i] >= "0" && password[i] <= "9") {
       passwordNumber = true;
-    }
-    else if (password[i].toUpperCase() === password[i]) {
+    } else if (password[i].toUpperCase() === password[i]) {
       upperCase = true;
-    }
-    else if (password[i].toUpperCase() !== password[i]) {
+    } else if (password[i].toUpperCase() !== password[i]) {
       lowerCase = true;
     }
   }
 
   if (passwordLength && passwordNumber && upperCase && lowerCase) {
     return true;
-  }
-  else {
+  } else {
     return false;
   }
 }
@@ -52,8 +49,7 @@ async function doRegister() {
         lastName,
       }),
     }).then((b) => b.json());
-  }
-  else {
+  } else {
     console.log("Password must meet all requirements!");
     window.location.href = "Registration.html";
   }
@@ -61,8 +57,7 @@ async function doRegister() {
   if (data.result) {
     console.log("Account created successfully!");
     window.location.href = "index.html";
-  }
-  else {
+  } else {
     console.log(data.error);
   }
 }
@@ -89,10 +84,10 @@ async function doLogin() {
   if (data.result) {
     console.log(
       "Your name is " +
-      data.user.firstName +
-      " " +
-      data.user.lastName +
-      " and you have logged in."
+        data.user.firstName +
+        " " +
+        data.user.lastName +
+        " and you have logged in."
     );
     window.location.href = "LandingPage.html";
   } else console.log(data.error);
@@ -125,7 +120,7 @@ async function addContact(userId, contact) {
         lastName,
         contactEmail,
         phoneNumber,
-      }
+      },
     }),
   }).then((b) => b.json());
 
@@ -133,5 +128,4 @@ async function addContact(userId, contact) {
     console.log("Contact Added Successfully!");
     window.location.href = "AddContact.html";
   } else console.log(data.error);
-
 }

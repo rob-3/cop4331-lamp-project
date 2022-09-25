@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Group 21 - Contact Book Registration</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/Registration.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/code.js"></script>
+  </head>
 
-<head>
-  <title>Group 21 - Contact Book Registration</title>
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
-  <link href="css/Registration.css" rel="stylesheet">
-  <script type="text/javascript" src="js/code.js"></script>
-</head>
-
-<body>
-  <div class="container">
-    <div class="squarebg">
-      <h1>Signup</h1>
-      <input type="text" id="firstName" placeholder="First Name" required>
-      <input type="text" id="lastName" placeholder="Last Name" required>
-      <input type="text" id="registerName" placeholder="Username" required>
-      <input type="password" id="registerPassword" placeholder="Password" required>
-      <span class="passwordRequirements"> Requirements:
-        <br> 8 characters
-        <br> 1 number
-        <br> 1 upper case character
-        <br> 1 lower case character
-      </span>
-      <div class="buttons">
-        <button type="button" class="button" onclick="doRegister()">Create Account</button>
-        <p>Already have an account? <a href="Registration.html">Login!</a></p>
+  <body>
+    <div class="container">
+      <div class="squarebg">
+        <h1>Signup</h1>
+        <input type="text" id="firstName" placeholder="First Name" required />
+        <input type="text" id="lastName" placeholder="Last Name" required />
+        <input type="text" id="registerName" placeholder="Username" required />
+        <input
+          type="password"
+          id="registerPassword"
+          placeholder="Password"
+          required
+        />
+        <span class="passwordRequirements">
+          Requirements: <br />
+          8 characters <br />
+          1 number <br />
+          1 upper case character <br />
+          1 lower case character
+        </span>
+        <div class="buttons">
+          <button type="button" class="button" onclick="doRegister()">
+            Create Account
+          </button>
+          <p>Already have an account? <a href="Registration.html">Login!</a></p>
+        </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

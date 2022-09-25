@@ -1,34 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Edit Contact</title>
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/EditContact.css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/EditContact.css" />
     <script type="text/javascript" src="js/edit.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="squarebg">
-            <h1>Edit Contact Details</h1>
-            <div class="two-column-layout">
-                <em id="leftHeader">Enter information to be replaced below.</em>
-                <input class="inputbox" type="text" id="firstName" placeholder="First Name" required>
-                <input class="inputbox" type="text" id="lastName" placeholder="Last Name" required>
-                <input class="inputbox" type="text" id="phoneNumber" placeholder="Phone Number" required>
-                <input class="inputbox" type="email" id="contactEmail" placeholder="E-Mail Address" required>
-                <button type="button" class="submitChanges" onclick="editContact()">Submit Changes</button>
-                <em id="rightHeader">Current</em>
-                <div class="current" id="currentFirstname">Rob</div>
-                <div class="current" id="currentLastname">Boyd</div>
-                <div class="current" id="currentPhone">1234567890</div>
-                <div class="current" id="currentEmail">abc123@example.com</div>
-                <button type="button" class="deleteContact" onclick="deleteContact()"><strong>Delete
-                        Contact</strong></button>
-            </div>
-            <a class="editContact" href="LandingPage.html">Return to Menu</a>
+      <div class="squarebg">
+        <h1>Edit Contact Details</h1>
+        <div class="two-column-layout">
+          <em id="leftHeader">Enter information to be replaced below.</em>
+          <input
+            class="inputbox"
+            type="text"
+            id="firstName"
+            placeholder="First Name"
+            required
+          />
+          <input
+            class="inputbox"
+            type="text"
+            id="lastName"
+            placeholder="Last Name"
+            required
+          />
+          <input
+            class="inputbox"
+            type="text"
+            id="phoneNumber"
+            placeholder="Phone Number"
+            required
+          />
+          <input
+            class="inputbox"
+            type="email"
+            id="contactEmail"
+            placeholder="E-Mail Address"
+            required
+          />
+          <button type="button" class="submitChanges" onclick="editContact()">
+            Submit Changes
+          </button>
+          <em id="rightHeader">Current</em>
+          <div class="current" id="currentFirstname">Rob</div>
+          <div class="current" id="currentLastname">Boyd</div>
+          <div class="current" id="currentPhone">1234567890</div>
+          <div class="current" id="currentEmail">abc123@example.com</div>
+          <button type="button" class="deleteContact" onclick="deleteContact()">
+            <strong>Delete Contact</strong>
+          </button>
         </div>
-</body>
-
+        <a class="editContact" href="LandingPage.html">Return to Menu</a>
+      </div>
+    </div>
+  </body>
 </html>

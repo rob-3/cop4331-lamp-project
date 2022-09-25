@@ -41,7 +41,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-p{
+p {
   font-size: 18px;
   font-family: Ubuntu;
   font-weight: Regular;
@@ -74,7 +74,7 @@ input {
   border: 1px solid black;
   transition: all;
   transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition-duration: .15s;
+  transition-duration: 0.15s;
   margin-bottom: 2rem;
 }
 

@@ -1,65 +1,53 @@
-async function editContacts(){
+async function editContacts() {
   const data = await fetch("/api/SearchContacts.php", {
-      method: "POST",
-      headers: {
-          "content-type": "application/json",
-      },
-      body: JSON.stringify({
-          query: "rob",
-          userId: 1,
-  
-      })
-  }).then(b => b.json());
-      
-      const first = document.getElementById("firstName").value;
-      const last = document.getElementById("lastName").value;
-      const mail = document.getElementById("contactEmail").value;
-      const tele = document.getElementById("phoneNumber").value;
-      
-      if(first != data.contacts[0].firstName && first.length > 0){
-        console.log("they are different!");
-      }
-       
-    else first = data.contacts[0].firstName;
-    
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      query: "rob",
+      userId: 1,
+    }),
+  }).then((b) => b.json());
 
-    if(last != data.contacts[0].lastName && last.length > 0)
-      console.log("they are different!");
-    
-     
-  else
-      last = data.contacts[0].lastName;
-  
+  const first = document.getElementById("firstName").value;
+  const last = document.getElementById("lastName").value;
+  const mail = document.getElementById("contactEmail").value;
+  const tele = document.getElementById("phoneNumber").value;
 
-  if(mail != data.contacts[0].email && mail.length > 0){
+  if (first != data.contacts[0].firstName && first.length > 0) {
     console.log("they are different!");
-  }
-   
-else{
+  } else first = data.contacts[0].firstName;
+
+  if (last != data.contacts[0].lastName && last.length > 0)
+    console.log("they are different!");
+  else last = data.contacts[0].lastName;
+
+  if (mail != data.contacts[0].email && mail.length > 0) {
+    console.log("they are different!");
+  } else {
     mail = data.contacts[0].mail;
-}
+  }
 
-  if(tele != data.contacts[0].phoneNumber && tele.length > 0){
+  if (tele != data.contacts[0].phoneNumber && tele.length > 0) {
     console.log("they are different!");
-}
- 
-  else{
+  } else {
     tele = data.contacts[0].phoneNumber;
-}
-    fetch("/api/EditContact.php", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
+  }
+  fetch("/api/EditContact.php", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      userId: 1,
+      contact: {
+        contactId: 567570,
+        firstName: first,
+        lastName: last,
+        email: mail,
+        phoneNumber: tele,
       },
-      body: JSON.stringify({
-        userId: 1,
-        contact: {
-            contactId: 567570,
-            firstName: first,
-            lastName: last,
-            email: mail,
-            phoneNumber: tele
-        }
-      })
-}).then(b => b.json());
-   }
+    }),
+  }).then((b) => b.json());
+}

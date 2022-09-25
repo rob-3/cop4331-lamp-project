@@ -51,3 +51,20 @@ async function editContact() {
     }),
   }).then((b) => b.json());
 }
+async function deleteContact(){
+  const data = await fetch("/api/DeleteContact.php", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      query: "rob",
+      userId: 1,
+      contact: {
+        contactId: 567570,
+      },
+    }),
+  }).then((b) => b.json());
+
+console.log(data);
+}

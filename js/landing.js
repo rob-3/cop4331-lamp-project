@@ -1,3 +1,8 @@
+const { firstName, id } = localStorage.getItem('user');
+const title = `Welcome ${firstName}!`;
+const table = document.getElementById("contacts");
+const searchBar = document.querySelector(".searchBar");
+
 let currentRequestId = 0;
 
 async function searchContacts(query, userId) {
@@ -13,15 +18,14 @@ async function searchContacts(query, userId) {
   }).then((b) => b.json());
 }
 
-const table = document.getElementById("contacts");
-async function loadTable(query, id) {
-  if (id !== currentRequestId) {
+async function loadTable(query, requestId) {
+  if (requestId !== currentRequestId) {
     console.log("our request was too old and got cancelled!");
     return;
   }
   console.log(`started loading for query ${query}`);
   table.innerHTML = "Loading...";
-  const data = await searchContacts(query, 1);
+  const data = await searchContacts(query, id);
   console.log(`got data for query ${query}`);
   if (data.contacts.length === 0) {
     table.innerHTML = "There is nothing!";
@@ -49,7 +53,6 @@ async function loadTable(query, id) {
   }
 }
 
-const searchBar = document.querySelector(".searchBar");
 searchBar.addEventListener("keydown", () => {
   currentRequestId++;
   const id = currentRequestId;
@@ -61,3 +64,5 @@ searchBar.addEventListener("keydown", () => {
 });
 
 loadTable("");
+
+document.querySelector('#title').innerHTML = title;

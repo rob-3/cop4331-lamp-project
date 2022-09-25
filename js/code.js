@@ -89,6 +89,7 @@ async function doLogin() {
         data.user.lastName +
         " and you have logged in."
     );
+    localStorage.setItem('user', data.user);
     window.location.href = "LandingPage.html";
   } else console.log(data.error);
 }

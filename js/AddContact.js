@@ -27,7 +27,9 @@ addContactButton.addEventListener('click', async () => {
 const addContact = async ({ userId, contact: { firstName, lastName, email, phoneNumber } }) => {
 	const response = await fetch('/api/AddContact.php', {
 		method: 'POST',
-		headers: 'application/json',
+		headers: {
+			'content-type': 'application/json'
+		},
 		body: JSON.stringify({
 			userId,
 			contact: {

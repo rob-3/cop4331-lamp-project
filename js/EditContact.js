@@ -13,7 +13,7 @@ async function editContact() {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      userId: 1,
+      userId,
       contact: {
         contactId,
         firstName,

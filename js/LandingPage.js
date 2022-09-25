@@ -59,7 +59,7 @@ async function loadTable(query, requestId) {
 
 function onTableRowClick(contactId) {
   const params = new URLSearchParams({ contactId: contactId.toString() });
-  window.location.href = `/EditContact.php?${params}`
+  window.location.href = `/EditContact.html?${params}`
 }
 
 searchBar.addEventListener("keydown", () => {

@@ -1,13 +1,6 @@
-let userId = 0;
-let firstName = "";
-let lastName = "";
-
 async function doLogin() {
-  userId = 0;
-  firstName = "";
-  lastName = "";
-  let login = document.getElementById("loginName").value;
-  let password = document.getElementById("loginPassword").value;
+  const username = document.getElementById("loginName").value;
+  const password = document.getElementById("loginPassword").value;
 
   const data = await fetch("/api/Login.php", {
     method: "POST",
@@ -15,10 +8,8 @@ async function doLogin() {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      username: login,
+      username,
       password,
-      firstName,
-      lastName,
     }),
   }).then((b) => b.json());
   if (data.result) {
@@ -35,9 +26,6 @@ async function doLogin() {
 }
 
 function doLogout() {
-  userId = 0;
-  firstName = "";
-  lastName = "";
-  document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+  localStorage.clear();
   window.location.href = "index.html";
 }

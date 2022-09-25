@@ -1,4 +1,4 @@
-const { firstName, id } = localStorage.getItem('user');
+const { firstName, id } = JSON.parse(localStorage.getItem('user'));
 const title = `Welcome ${firstName}!`;
 const table = document.getElementById("contacts");
 const searchBar = document.querySelector(".searchBar");

@@ -1,4 +1,8 @@
 const { firstName, id } = JSON.parse(localStorage.getItem('user'));
+if (!localStorage.getItem('contacts')) {
+  localStorage.setItem('contacts', JSON.stringify({}));
+}
+const contacts = JSON.parse(localStorage.getItem('contacts'))
 const title = `Welcome ${firstName}!`;
 const table = document.getElementById("contacts");
 const searchBar = document.querySelector(".searchBar");
@@ -39,8 +43,8 @@ async function loadTable(query, requestId) {
 
     // Loop to access all rows
     for (let contact of data.contacts.slice(0, 10)) {
-      const { firstName, lastName, email, phoneNumber } = contact;
-      tab += `<tr> 
+      const { firstName, lastName, email, phoneNumber, contactId } = contact;
+      tab += `<tr onclick="onTableRowClick(${contactId})"> 
 	<td>${firstName} </td>
 	<td>${lastName}</td>
 	<td>${email}</td> 
@@ -51,6 +55,11 @@ async function loadTable(query, requestId) {
     table.innerHTML = tab;
     console.log(`setting innerHTML for query ${query}`);
   }
+}
+
+function onTableRowClick(contactId) {
+  const params = new URLSearchParams({ contactId: contactId.toString() });
+  window.location.href = `/EditContact?${params}`
 }
 
 searchBar.addEventListener("keydown", () => {

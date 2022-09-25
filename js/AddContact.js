@@ -17,7 +17,7 @@ addContactButton.addEventListener('click', async () => {
 		}
 	});
 	if (success) {
-		window.href = '/LandingPage.html';
+		window.location.href = '/LandingPage.html';
 	} else {
 		console.log('adding contact failed!');
 	}

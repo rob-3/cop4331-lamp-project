@@ -71,7 +71,7 @@ input {
   text-align: left;
 }
 
-.button {
+#registerButton {
   border: none;
   background: black;
   border-radius: 0.7rem;
@@ -87,7 +87,7 @@ input {
   margin-bottom: 2rem;
 }
 
-.button:hover {
+#registerButton:hover {
   background: transparent;
   color: black;
   cursor: pointer;

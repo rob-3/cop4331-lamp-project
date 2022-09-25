@@ -41,32 +41,3 @@ function doLogout() {
   document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
   window.location.href = "index.html";
 }
-
-async function addContact(userId, contact) {
-  userId = 0;
-  let firstName = document.getElementById("firstName").value;
-  let lastName = document.getElementById("lastName").value;
-  let contactEmail = document.getElementById("contactEmail").value;
-  let phoneNumber = document.getElementById("phoneNumber").value;
-
-  const data = await fetch("/api/AddContact.php", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      userID: 1,
-      contact: {
-        firstName,
-        lastName,
-        contactEmail,
-        phoneNumber,
-      },
-    }),
-  }).then((b) => b.json());
-
-  if (data.result) {
-    console.log("Contact Added Successfully!");
-    window.location.href = "AddContact.html";
-  } else console.log(data.error);
-}

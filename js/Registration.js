@@ -44,16 +44,15 @@ async function doRegister() {
         lastName,
       }),
     }).then((b) => b.json());
+    if (data.result) {
+      console.log("Account created successfully!");
+      window.location.href = "index.html";
+    } else {
+      console.log(data.error);
+    }
   } else {
     console.log("Password must meet all requirements!");
     window.location.href = "Registration.html";
-  }
-
-  if (data.result) {
-    console.log("Account created successfully!");
-    window.location.href = "index.html";
-  } else {
-    console.log(data.error);
   }
 }
 

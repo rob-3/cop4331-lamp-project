@@ -1,9 +1,9 @@
 const params = new URL(window.location.href).searchParams;
 const contactId = Number(params.get("contactId"));
-const firstName = Number(params.get("firstName"));
-const lastName = Number(params.get("lastName"));
-const phoneNumber = Number(params.get("phoneNumber"));
-const email = Number(params.get("email"));
+const firstName = params.get("firstName");
+const lastName = params.get("lastName");
+const phoneNumber = params.get("phoneNumber");
+const email = params.get("email");
 const { id: userId } = JSON.parse(localStorage.getItem("user"));
 const firstNameInput = document.getElementById("firstName");
 const lastNameInput = document.getElementById("lastName");

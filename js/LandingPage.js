@@ -72,6 +72,11 @@ searchBar.addEventListener("keydown", () => {
   }, 200);
 });
 
+function doLogout() {
+  localStorage.clear();
+  window.location.href = "index.html";
+}
+
 loadTable("", currentRequestId);
 
 document.querySelector('#title').innerHTML = title;

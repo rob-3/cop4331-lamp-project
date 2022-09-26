@@ -171,3 +171,13 @@ a {
 #currentEmail {
   grid-area: j;
 }
+
+#buttons {
+  display: flex;
+  gap: 1rem;
+  width: min(30em, 100%);
+}
+
+.button {
+  flex: 1 1 0;
+}

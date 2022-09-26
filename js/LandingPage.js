@@ -46,7 +46,8 @@ async function loadTable(query, requestId) {
     // Loop to access all rows
     for (let contact of data.contacts.slice(0, 10)) {
       const { firstName, lastName, email, phoneNumber, contactId } = contact;
-      tab += `<tr onclick="onTableRowClick({ contactId: ${contactId}, firstName: \`${firstName}\`, lastName: \`${lastName}\`, email: \`${email}\`})"> 
+      console.log({ firstName, lastName, email, phoneNumber, contactId });
+      tab += `<tr onclick="onTableRowClick({ contactId: ${contactId}, firstName: \`${firstName}\`, lastName: \`${lastName}\`, email: \`${email}\`, phoneNumber: \`${phoneNumber}\`})"> 
 	<td>${firstName} </td>
 	<td>${lastName}</td>
 	<td>${email}</td> 

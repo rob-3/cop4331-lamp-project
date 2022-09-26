@@ -46,7 +46,7 @@ async function loadTable(query, requestId) {
     // Loop to access all rows
     for (let contact of data.contacts.slice(0, 10)) {
       const { firstName, lastName, email, phoneNumber, contactId } = contact;
-      tab += `<tr onclick="onTableRowClick(${contactId})"> 
+      tab += `<tr onclick="onTableRowClick({ contactId: ${contactId}, firstName: ${firstName}, lastName: ${lastName}, email: ${email}})"> 
 	<td>${firstName} </td>
 	<td>${lastName}</td>
 	<td>${email}</td> 
@@ -59,8 +59,8 @@ async function loadTable(query, requestId) {
   }
 }
 
-function onTableRowClick(contactId) {
-  const params = new URLSearchParams({ contactId: contactId.toString() });
+function onTableRowClick({ contactId, firstName, lastName, phoneNumber, email }) {
+  const params = new URLSearchParams({ contactId: contactId.toString(), firstName, lastName, phoneNumber, email });
   window.location.href = `/EditContact.html?${params}`
 }
 

@@ -1,11 +1,20 @@
-const contactId = Number(new URL(window.location.href).searchParams.get("contactId"));
+const params = new URL(window.location.href).searchParams;
+const contactId = Number(params.get("contactId"));
+const firstName = Number(params.get("firstName"));
+const lastName = Number(params.get("lastName"));
+const phoneNumber = Number(params.get("phoneNumber"));
+const email = Number(params.get("email"));
 const { id: userId } = JSON.parse(localStorage.getItem("user"));
+const firstNameInput = document.getElementById("firstName");
+const lastNameInput = document.getElementById("lastName");
+const emailInput = document.getElementById("contactEmail");
+const phoneNumberInput = document.getElementById("phoneNumber");
 
 async function editContact() {
-  const firstName = document.getElementById("firstName").value;
-  const lastName = document.getElementById("lastName").value;
-  const email = document.getElementById("contactEmail").value;
-  const phoneNumber = document.getElementById("phoneNumber").value;
+  const firstName = firstNameInput.value;
+  const lastName = lastNameInput.value;
+  const email = emailInput.value;
+  const phoneNumber = phoneNumberInput.value;
 
   await fetch("/api/EditContact.php", {
     method: "POST",
@@ -39,3 +48,8 @@ async function deleteContact(){
   }).then((b) => b.json());
   window.location.href = "/LandingPage.html"
 }
+
+firstNameInput.value = firstName;
+lastNameInput.value = lastName;
+phoneNumberInput.value = phoneNumber;
+emailInput.value = email;

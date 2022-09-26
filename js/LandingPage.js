@@ -6,6 +6,8 @@ const contacts = JSON.parse(localStorage.getItem('contacts'))
 const title = `Welcome ${firstName}!`;
 const table = document.getElementById("contacts");
 const searchBar = document.querySelector(".searchBar");
+const logoutButton = document.querySelector("#logoutButton");
+const addContactButton = document.querySelector("#addContactButton");
 
 let currentRequestId = 0;
 
@@ -80,3 +82,8 @@ function doLogout() {
 loadTable("", currentRequestId);
 
 document.querySelector('#title').innerHTML = title;
+
+logoutButton.addEventListener('click', doLogout);
+addContactButton.addEventListener('click', () => {
+  window.location.href = '/AddContact.html';
+});

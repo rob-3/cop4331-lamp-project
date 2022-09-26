@@ -38,24 +38,49 @@ body {
   flex-direction: column;
 }
 
-.buttons {
-  font-size: 30px;
-  border-radius: 15px;
-  width: 40%;
+.addContact {
+  margin-top: 1rem;
+  border: none;
+  background: black;
+  border-radius: 0.7rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 16px;
+  font-weight: Regular;
   font-family: "Ubuntu", sans-serif;
-  background: rgb(37, 51, 120);
-  float: left;
-  clear: both;
+  color: #eeeeee;
+  border: 1px solid black;
+  transition: all;
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition-duration: 0.15s;
+}
+
+.addContact:hover {
+  background: transparent;
+  color: black;
+  cursor: pointer;
+}
+.logout {
+  margin-top: 1rem;
+  border: none;
+  background: red;
+  border-radius: 0.7rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 16px;
+  font-weight: Regular;
+  font-family: "Ubuntu", sans-serif;
   color: white;
-  margin-top: 20px;
+  border: 1px solid black;
+  transition: all;
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition-duration: 0.15s;
+  text-decoration: underline;
 }
 
-.buttons:hover {
-  background-color: purple;
-  color: #ffffff;
-  opacity: 75%;
+.logout:hover {
+  background: transparent;
+  color: black;
+  cursor: pointer;
 }
-
 /*
 input[type = search] {
     border: 1px solid rgb(232, 211, 167);
@@ -102,14 +127,17 @@ input[type = search] {
 
 tr:nth-child(even) {
   background-color: rgba(37, 51, 120, 0.5);
+  font-family: "Ubuntu", sans-serif;
 }
 
 tr:nth-child(odd) {
   background-color: rgba(128, 0, 128, 0.7);
+  font-family: "Ubuntu", sans-serif;
 }
 
 tr:first-child {
   background-color: transparent;
+  font-family: "Ubuntu", sans-serif;
 }
 
 /*

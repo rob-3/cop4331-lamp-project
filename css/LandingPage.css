@@ -39,7 +39,7 @@ body {
 }
 
 .addContact {
-  margin-top: 1rem;
+  flex-shrink: 0;
   border: none;
   background: black;
   border-radius: 0.7rem;
@@ -60,7 +60,7 @@ body {
   cursor: pointer;
 }
 .logout {
-  margin-top: 1rem;
+  flex-shrink: 0;
   border: none;
   background: red;
   border-radius: 0.7rem;
@@ -103,22 +103,26 @@ input[type = search] {
 }
 
 .searchBar {
+  flex: 1 1 0px;
   border: 0.5px solid black;
-  width: 80%;
   height: 1.6em;
   background-color: white;
   text-align: center;
   border-radius: 0.7rem;
   font-size: 32px;
   color: black;
-  padding-left: 0.7em;
   font-family: Ubuntu;
   font-weight: Regular;
+  min-width: 0;
+  height: 100%;
 }
 
 .column {
+  width: 100%;
   display: flex;
+  gap: 1rem;
   justify-content: center;
+  place-items: center;
 }
 
 #contacts {

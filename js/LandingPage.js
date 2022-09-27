@@ -1,3 +1,24 @@
+let scrollPosition = 0;
+let ticking = false;
+
+function doSomething(scroll_pos) {
+  //load the next few contacts
+  scrollPosition += 10;//the LIMIT I added to SearchContact.php should restrict it from having 18 values, etc.
+}
+
+contacts.addEventListener('scroll', (e) => {
+  scrollPosition = contacts.scrollY;//get the number of contacts displayed (contact 10, 16, whatever)
+
+  if (scrollPosition >= 8) {//if the contact displayed is greated than 8 increase by 10
+    contacts.requestAnimationFrame(() => { //used to be window.requestAnimationFrame
+      doSomething(scrollPosition);
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
+
 const { firstName, id } = JSON.parse(localStorage.getItem('user'));
 if (!localStorage.getItem('contacts')) {
   localStorage.setItem('contacts', JSON.stringify({}));
@@ -46,8 +67,7 @@ async function loadTable(query, requestId) {
     // Loop to access all rows
     for (let contact of data.contacts.slice(0, 10)) {
       const { firstName, lastName, email, phoneNumber, contactId } = contact;
-      console.log({ firstName, lastName, email, phoneNumber, contactId });
-      tab += `<tr onclick="onTableRowClick({ contactId: ${contactId}, firstName: \`${firstName}\`, lastName: \`${lastName}\`, email: \`${email}\`, phoneNumber: \`${phoneNumber}\`})"> 
+      tab += `<tr onclick="onTableRowClick(${contactId})"> 
 	<td>${firstName} </td>
 	<td>${lastName}</td>
 	<td>${email}</td> 
@@ -60,8 +80,8 @@ async function loadTable(query, requestId) {
   }
 }
 
-function onTableRowClick({ contactId, firstName, lastName, phoneNumber, email }) {
-  const params = new URLSearchParams({ contactId: contactId.toString(), firstName, lastName, phoneNumber, email });
+function onTableRowClick(contactId) {
+  const params = new URLSearchParams({ contactId: contactId.toString() });
   window.location.href = `/EditContact.html?${params}`
 }
 

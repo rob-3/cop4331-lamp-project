@@ -92,3 +92,11 @@ input {
   color: black;
   cursor: pointer;
 }
+#noerror{
+  opacity: 0;
+}
+  
+#error{
+  opacity: 1;
+  color: red;
+}

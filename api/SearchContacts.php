@@ -1,7 +1,7 @@
 <?php
 require_once('./Utils.php');
 on_json_request_with_db(function (mixed $requestData, mysqli $db) {
-	$stmt = $db->prepare("select * from Contacts where (FirstName like ? OR LastName like ?) AND UserID=?");
+	$stmt = $db->prepare("select * from Contacts where (FirstName like ? OR LastName like ?) AND UserID=? LIMIT 10");//added LIMIT 10 to this line
 	$contactName = "%" . $requestData["query"] . "%";
 	$stmt->bind_param("ssi", $contactName, $contactName, $requestData["userId"]);
 	$stmt->execute();

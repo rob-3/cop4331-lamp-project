@@ -81,3 +81,17 @@ input {
 #loginPassword {
   margin-bottom: 2rem;
 }
+
+#noerror{
+  opacity: 0;
+}
+
+#error{
+  opacity: 1;
+  color: red;
+}
+
+#success{
+  opacity: 1;
+  color: green;
+}

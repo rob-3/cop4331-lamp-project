@@ -3,7 +3,8 @@ require_once('./Utils.php');
 on_json_request_with_db(function (mixed $requestData, mysqli $db) {
 	$stmt = $db->prepare("select * from Contacts where (FirstName like ? OR LastName like ?) AND UserID=? LIMIT 10 OFFSET ?");//added LIMIT 10 to this line
 	$contactName = "%" . $requestData["query"] . "%";
-	$stmt->bind_param("ssii", $contactName, $contactName, $requestData["userId"], ($requestData["page"] ?? 0) * 10);
+	$offset = ($requestData["page"] ?? 0) * 10;
+	$stmt->bind_param("ssii", $contactName, $contactName, $requestData["userId"], $offset);
 	$stmt->execute();
 	$result = $stmt->get_result();
 

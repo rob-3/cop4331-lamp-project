@@ -158,5 +158,6 @@ tr:first-child {
 }
 
 #container {
-  overflow: scroll;
+  overflow-y: scroll;
+  width: 100%;
 }

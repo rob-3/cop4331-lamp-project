@@ -1,3 +1,4 @@
+/*
 let scrollPosition = 0;
 let ticking = false;
 
@@ -17,6 +18,7 @@ contacts.addEventListener('scroll', (e) => {
     ticking = true;
   }
 });
+*/
 
 const { firstName, id } = JSON.parse(localStorage.getItem('user'));
 if (!localStorage.getItem('contacts')) {
@@ -64,7 +66,7 @@ async function loadTable(query, requestId) {
 	</tr>`;
 
     // Loop to access all rows
-    for (let contact of data.contacts.slice(0, 10)) {
+    for (let contact of data.contacts) {
       const { firstName, lastName, email, phoneNumber, contactId } = contact;
       console.log({ firstName, lastName, email, phoneNumber, contactId });
       tab += `<tr onclick="onTableRowClick({ contactId: ${contactId}, firstName: \`${firstName}\`, lastName: \`${lastName}\`, email: \`${email}\`, phoneNumber: \`${phoneNumber}\`})"> 

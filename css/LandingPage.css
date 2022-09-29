@@ -156,3 +156,7 @@ tr:first-child {
 .hidden {
   visibility: hidden;
 }
+
+#container {
+  overflow: scroll;
+}

@@ -119,7 +119,7 @@ async function loadMore(query) {
   const data = await searchContacts(query, id, currentPage);
   console.log(`got data for query ${query}`);
   if (data.contacts.length === 0) {
-    table.innerHTML = "There is nothing!";
+    // do nothing
   } else {
     let tab = '';
 

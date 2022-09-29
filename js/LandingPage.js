@@ -38,6 +38,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 
 /* Other Functions */
+
 let scrollPosition = 0;
 let ticking = false;
 
@@ -57,6 +58,7 @@ contacts.addEventListener('scroll', (e) => {
     ticking = true;
   }
 });
+*/
 
 const { firstName, id } = JSON.parse(localStorage.getItem('user'));
 if (!localStorage.getItem('contacts')) {
@@ -71,7 +73,7 @@ const addContactButton = document.querySelector("#addContactButton");
 
 let currentRequestId = 0;
 
-async function searchContacts(query, userId) {
+async function searchContacts(query, userId, page = 0) {
   return await fetch("/api/SearchContacts.php", {
     method: "POST",
     headers: {
@@ -80,6 +82,7 @@ async function searchContacts(query, userId) {
     body: JSON.stringify({
       query,
       userId,
+      page,
     }),
   }).then((b) => b.json());
 }
@@ -96,7 +99,7 @@ async function loadTable(query, requestId) {
   if (data.contacts.length === 0) {
     table.innerHTML = "There is nothing!";
   } else {
-    let tab = `<tr>
+    let tab = `<tbody id="tbody"><tr>
 	<th>First Name</th>
 	<th>Last Name</th>
 	<th>Email</th>
@@ -104,7 +107,7 @@ async function loadTable(query, requestId) {
 	</tr>`;
 
     // Loop to access all rows
-    for (let contact of data.contacts.slice(0, 10)) {
+    for (let contact of data.contacts) {
       const { firstName, lastName, email, phoneNumber, contactId } = contact;
       console.log({ firstName, lastName, email, phoneNumber, contactId });
       tab += `<tr onclick="onTableRowClick({ contactId: ${contactId}, firstName: \`${firstName}\`, lastName: \`${lastName}\`, email: \`${email}\`, phoneNumber: \`${phoneNumber}\`})"> 
@@ -114,6 +117,7 @@ async function loadTable(query, requestId) {
 	<td>${phoneNumber}</td>          
 	</tr>`;
     }
+    tab += "</tbody>";
     // Setting innerHTML as tab variable
     table.innerHTML = tab;
     console.log(`setting innerHTML for query ${query}`);
@@ -147,4 +151,43 @@ document.querySelector('#title').innerHTML = title;
 logoutButton.addEventListener('click', doLogout);
 addContactButton.addEventListener('click', () => {
   window.location.href = '/AddContact.html';
+});
+
+let currentPage = 0;
+let isLoading = false;
+
+async function loadMore(query) {
+  const tbody = document.querySelector('#tbody');
+  const data = await searchContacts(query, id, currentPage);
+  console.log(`got data for query ${query}`);
+  if (data.contacts.length === 0) {
+    // do nothing
+  } else {
+    let tab = '';
+
+    // Loop to access all rows
+    for (let contact of data.contacts) {
+      const { firstName, lastName, email, phoneNumber, contactId } = contact;
+      console.log({ firstName, lastName, email, phoneNumber, contactId });
+      tab += `<tr onclick="onTableRowClick({ contactId: ${contactId}, firstName: \`${firstName}\`, lastName: \`${lastName}\`, email: \`${email}\`, phoneNumber: \`${phoneNumber}\`})"> 
+	<td>${firstName} </td>
+	<td>${lastName}</td>
+	<td>${email}</td> 
+	<td>${phoneNumber}</td>          
+	</tr>`;
+    }
+    // Setting innerHTML as tab variable
+    tbody.innerHTML += tab;
+    console.log(`setting innerHTML for query ${query}`);
+  }
+}
+
+const container = document.querySelector('#container');
+container.addEventListener('scroll', async () => {
+  if (Math.abs(container.scrollHeight - container.clientHeight - container.scrollTop) < 1 && !isLoading) {
+    currentPage++;
+    isLoading = true;
+    await loadMore(searchBar.value);
+    isLoading = false;
+  }
 });

@@ -172,6 +172,7 @@ input[type = search] {
 #contacts {
   margin-top: 1.5rem;
   text-align: center;
+  width: 100%;
 }
 
 tr:nth-child(even) {
@@ -208,4 +209,9 @@ tr:nth-child:hover {
 
 .hidden {
   visibility: hidden;
+}
+
+#container {
+  overflow-y: scroll;
+  width: 100%;
 }

@@ -1,4 +1,44 @@
-/*
+/* Second Splash Screen Loading */
+let splash = document.querySelector('.splash');
+let logo = document.querySelector('.logo-header');
+let logoSpan = document.querySelectorAll('.logo');
+
+window.addEventListener('DOMContentLoaded', ()=>{
+
+    if(!sessionStorage.getItem('shown')) {
+      setTimeout(()=>{
+
+        logoSpan.forEach((span, idx)=>{
+            setTimeout(()=>{
+                span.classList.add('active');
+            }, (idx + 1) * 400)
+        });
+
+        setTimeout(()=>{
+            logoSpan.forEach((span, idx)=>{
+
+                setTimeout(()=>{
+                    span.classList.remove('active');
+                    span.classList.add('fade');
+                }, (idx + 1) * 50)
+            })
+        },2000);
+
+        setTimeout(()=>{
+            splash.style.top = '-100vh';
+        },2800);
+
+
+
+      })
+
+    sessionStorage.setItem('shown', true);
+    }
+})
+
+
+/* Other Functions */
+
 let scrollPosition = 0;
 let ticking = false;
 

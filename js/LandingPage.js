@@ -115,7 +115,7 @@ addContactButton.addEventListener('click', () => {
 let currentPage = 0;
 let isLoading = false;
 
-async function loadMore(query, page) {
+async function loadMore(query) {
   const data = await searchContacts(query, id, currentPage);
   console.log(`got data for query ${query}`);
   if (data.contacts.length === 0) {
@@ -144,7 +144,7 @@ table.addEventListener('scroll', async () => {
   if (Math.abs(table.scrollHeight - table.clientHeight - table.scrollTop) < 1 && !isLoading) {
     currentPage++;
     isLoading = true;
-    await loadMore(searchBar.value, currentPage);
+    await loadMore(searchBar.value);
     isLoading = false;
   }
 });

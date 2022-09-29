@@ -59,7 +59,7 @@ async function loadTable(query, requestId) {
   if (data.contacts.length === 0) {
     table.innerHTML = "There is nothing!";
   } else {
-    let tab = `<tr>
+    let tab = `<tbody id="tbody"><tr>
 	<th>First Name</th>
 	<th>Last Name</th>
 	<th>Email</th>
@@ -77,6 +77,7 @@ async function loadTable(query, requestId) {
 	<td>${phoneNumber}</td>          
 	</tr>`;
     }
+    tab += "</tbody>";
     // Setting innerHTML as tab variable
     table.innerHTML = tab;
     console.log(`setting innerHTML for query ${query}`);
@@ -116,6 +117,7 @@ let currentPage = 0;
 let isLoading = false;
 
 async function loadMore(query) {
+  const tbody = document.querySelector('#tbody');
   const data = await searchContacts(query, id, currentPage);
   console.log(`got data for query ${query}`);
   if (data.contacts.length === 0) {
@@ -135,7 +137,7 @@ async function loadMore(query) {
 	</tr>`;
     }
     // Setting innerHTML as tab variable
-    table.innerHTML += tab;
+    tbody.innerHTML += tab;
     console.log(`setting innerHTML for query ${query}`);
   }
 }

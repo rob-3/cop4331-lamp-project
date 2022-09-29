@@ -12,10 +12,52 @@ body {
   width: 100%;
   height: 100%;
   background-image: linear-gradient(360deg, #fff, #4c9f70);
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
+/* Splash Screen for Landing Page */
+.splash {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.logo-header {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo {
+  position: relative;
+  font-family: 'Optician Sans', sans-serif;
+  bottom: -20px;
+  opacity: 0;
+}
+
+.logo{
+  bottom: 0;
+  opacity: 1;
+  transition: ease-in-out 0.5s;
+}
+
+.logo.fade {
+  bottom: 150px;
+  opacity: 0;
+  transition: ease-in-out 0.5s;
+}
+
+
+/* Main Landing Page */
 #title {
   font-size: 40px;
   text-align: center;

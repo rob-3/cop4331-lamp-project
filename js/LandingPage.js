@@ -140,8 +140,9 @@ async function loadMore(query) {
   }
 }
 
-table.addEventListener('scroll', async () => {
-  if (Math.abs(table.scrollHeight - table.clientHeight - table.scrollTop) < 1 && !isLoading) {
+const container = document.querySelector('#container');
+container.addEventListener('scroll', async () => {
+  if (Math.abs(container.scrollHeight - container.clientHeight - container.scrollTop) < 1 && !isLoading) {
     currentPage++;
     isLoading = true;
     await loadMore(searchBar.value);

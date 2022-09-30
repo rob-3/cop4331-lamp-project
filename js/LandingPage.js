@@ -6,6 +6,7 @@ let logoSpan = document.querySelectorAll('.logo');
 window.addEventListener('DOMContentLoaded', ()=>{
 
     if(!sessionStorage.getItem('shown')) {
+      sessionStorage.setItem('shown', true);
       setTimeout(()=>{
 
         logoSpan.forEach((span, idx)=>{
@@ -28,11 +29,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
             splash.style.top = '-100vh';
         },2800);
 
-
-
       })
-
-    sessionStorage.setItem('shown', true);
     }
 })
 

@@ -6,7 +6,6 @@ let logoSpan = document.querySelectorAll('.logo');
 window.addEventListener('DOMContentLoaded', ()=>{
 
     if(!sessionStorage.getItem('shown')) {
-      sessionStorage.setItem('shown', true); 
       setTimeout(()=>{
 
         logoSpan.forEach((span, idx)=>{
@@ -31,10 +30,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
       })
     }
+
+    sessionStorage.setItem('shown', true); 
 })
 
 
 /* Other Functions */
+/*
 let scrollPosition = 0;
 let ticking = false;
 
@@ -54,6 +56,7 @@ contacts.addEventListener('scroll', (e) => {
     ticking = true;
   }
 });
+*/
 
 const { firstName, id } = JSON.parse(localStorage.getItem('user'));
 if (!localStorage.getItem('contacts')) {

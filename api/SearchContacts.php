@@ -1,7 +1,7 @@
 <?php
 require_once('./Utils.php');
 on_json_request_with_db(function (mixed $requestData, mysqli $db) {
-	$stmt = $db->prepare("select * from Contacts where concat_ws(' ', FirstName, LastName) like ? AND UserID=? LIMIT ?, 15");//added LIMIT 10 to this line
+	$stmt = $db->prepare("select * from Contacts where concat_ws(' ', FirstName, LastName, Email, PhoneNumber) like ? AND UserID=? LIMIT ?, 15");//added LIMIT 10 to this line
 	$contactName = "%" . $requestData["query"] . "%";
 	$offset = ($requestData["page"] ?? 0) * 15;
 	$stmt->bind_param("sii", $contactName, $requestData["userId"], $offset);
